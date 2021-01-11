@@ -5,6 +5,7 @@ import sys
 from  pathlib import Path
 import time
 import os
+import random
 
 # **************************************modify here to add syspath if you need. ***************************
 _current_root = str(Path(__file__).resolve().parents[1])
@@ -33,6 +34,7 @@ from lib.client_lib import MessageType_InvalidToken
 from lib.client_lib import MessageType_GameStarted
 from lib.client_lib import MessageType_IllegalDecision
 from lib.simple_logger import simple_logger
+from lib.client_lib import judge_two
 # *******************************************************************************************
 
 
@@ -45,8 +47,8 @@ from AI.v1_1 import ai
 
 
 # **************************************modify here to set address and port ***********************
-address = 'localhost'
-port = 15000
+address = '47.103.23.116'
+port = 56703
 # *************************************************************************************************
 
 
@@ -363,14 +365,49 @@ class ClientJob(object):
 # You should never keep more than one connection to the server at the same time.
 #******************************************************************************
 
+# 胜率计算，认为对手均匀分布的模拟
+def get_win_rate(total_times, num_player, hole_card, community_card):
+    win_times = 0
+    cards = [card for card in range(52) if card not in hole_card and card not in community_card]
+    for i in range(total_times):
+        now_cards = cards.copy()
+        now_community_card = community_card.copy()
+        '''
+        # 给对手发牌
+        for j in range(num_player - 1):
+            t = random.sample(now_cards, 2)
+            opponents_cards.append(t)
+            now_cards = [card for card in now_cards if card not in t]
+        # 发公共牌
+        n_need_community = 5 - len(now_community_card)
+        now_community_card += random.sample(now_cards, n_need_community)
+        '''
+        # 发公共牌
+        n_need_community = 5 - len(now_community_card)
+        now_community_card += random.sample(now_cards, n_need_community)
+        now_cards = [card for card in now_cards if card not in now_community_card]
+        # 发对手牌
+        t = random.sample(now_cards, (num_player - 1) * 2)
+        opponents_cards = [t[2*i:2*i+2] for i in range(num_player - 1)]
+        # 计算胜者
+        for j in range(num_player - 1):
+            # cmp == 1 说明比某人小
+            cmp = judge_two(hole_card + now_community_card, opponents_cards[j] + now_community_card)
+            if cmp == 1:
+                break
+        if cmp != 1:
+            win_times += 1
+
+    return 1.0 * win_times / total_times
+
 
 if __name__ == '__main__':
 # ************************************ modify here to use your own username! ***********************
 
     if len(sys.argv) == 1:
         print('Error: enter the name for the client!')
-    username = sys.argv[1]
-    # username = "myusername"
+    #username = sys.argv[1]
+    username = "01Linus"
     logger = simple_logger()
 # ****************************************************************************************************
 
