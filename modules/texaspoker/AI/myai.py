@@ -50,18 +50,13 @@ class PowerRange():
                         if cmp == 1:
                             key = str(opponent_card[0]) + '#' + str(opponent_card[1])
                             self.range[range_item[key]][1] += 1
-                            key = str(opponent_card[1]) + '#' + str(opponent_card[0])
-                            self.range[range_item[key]][1] += 1
+
                         elif cmp == 0:
                             key = str(opponent_card[0]) + '#' + str(opponent_card[1])
-                            self.range[range_item[key]][1] += 0.5
-                            key = str(opponent_card[1]) + '#' + str(opponent_card[0])
                             self.range[range_item[key]][1] += 0.5
 
                         if cmp == -1:
                             key = str(hole_card[0]) + '#' + str(hole_card[1])
-                            self.range[range_item[key]][1] += 1
-                            key = str(hole_card[1]) + '#' + str(hole_card[0])
                             self.range[range_item[key]][1] += 1
         '''     
         for i in range(self.simu_time):
@@ -147,7 +142,7 @@ if __name__ == '__main__':
     r.append([my_hold, 0.5])
     r.append([[my_hold[1], my_hold[0]], 0.5])
     for i in range(52):
-        for j in range(52):
+        for j in range(i, 52):
             if i != j and i not in my_hold and j not in my_hold and i not in community_card and j not in community_card:
                 t = random.random()
                 r.append([[i, j], t])
