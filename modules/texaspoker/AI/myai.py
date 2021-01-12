@@ -4,6 +4,8 @@ from lib.client_lib import judge_two
 import time
 from lib.client_lib import id2color
 from lib.client_lib import id2num
+from lib.client_lib import Player
+
 
 def id2str(cards):
     color = ["S", "H", "D", "C"]
@@ -12,6 +14,10 @@ def id2str(cards):
     for card in cards:
         ans.append(color[id2color(card)] + nums[id2num(card)])
     return ans
+
+
+class MyPlayer(Player):
+    pass
 
 
 # 范围类
@@ -24,7 +30,6 @@ class PowerRange():
     # 根据公共牌更新range
     def update(self, hole_card, community_card):
         hole_card.sort()
-        cnt = 0
         t_start = time.time()
         range_item = {}
         for i in range(len(self.range)):
@@ -32,33 +37,31 @@ class PowerRange():
             range_item[key] = i
         for item in self.range:
             item[1] = 0  # 重新计数
+
         cards = [card for card in range(52) if card not in hole_card and card not in community_card]
         n_need_community = 5 - len(community_card)
-        for i in range(52):
-            if i in hole_card or i in community_card:
-                continue
-            for j in range(i + 1, 52):
-                if j in hole_card or j in community_card:
-                    continue
-                cnt += 1
-                opponent_card = [i, j]
-                now_cards = [card for card in cards if card not in opponent_card]
-                for x in range(self.simu_time):
-                    now_community_card = community_card + random.sample(now_cards, n_need_community)
-                    cmp = judge_two(hole_card + now_community_card, opponent_card + now_community_card)
-                    # 对手赢
-                    if (str(opponent_card[0]) + '#' + str(opponent_card[1])) in range_item.keys():
-                        if cmp == 1:
-                            key = str(opponent_card[0]) + '#' + str(opponent_card[1])
-                            self.range[range_item[key]][1] += 1
 
-                        elif cmp == 0:
-                            key = str(opponent_card[0]) + '#' + str(opponent_card[1])
-                            self.range[range_item[key]][1] += 0.5
+        possible_opponent_cards = [x[0] for x in self.range if x[0][0] not in hole_card + community_card and x[0][1] not
+                                   in hole_card + community_card]
 
-                        if cmp == -1:
-                            key = str(hole_card[0]) + '#' + str(hole_card[1])
-                            self.range[range_item[key]][1] += 1
+        for opponent_card in possible_opponent_cards:
+            now_cards = [card for card in cards if card not in opponent_card]
+            for x in range(self.simu_time):
+                now_community_card = community_card + random.sample(now_cards, n_need_community)
+                cmp = judge_two(hole_card + now_community_card, opponent_card + now_community_card)
+                # 对手赢
+                if (str(opponent_card[0]) + '#' + str(opponent_card[1])) in range_item.keys():
+                    if cmp == 1:
+                        key = str(opponent_card[0]) + '#' + str(opponent_card[1])
+                        self.range[range_item[key]][1] += 1
+
+                    elif cmp == 0:
+                        key = str(opponent_card[0]) + '#' + str(opponent_card[1])
+                        self.range[range_item[key]][1] += 0.5
+
+                    if cmp == -1:
+                        key = str(hole_card[0]) + '#' + str(hole_card[1])
+                        self.range[range_item[key]][1] += 1
         '''     
         for i in range(self.simu_time):
             now_cards = cards.copy()
@@ -91,7 +94,7 @@ class PowerRange():
             if item[0] != hole_card:
                 item[1] = 1.0 * item[1] / self.simu_time # 得到概率
             else:
-                item[1] = 1.0 * item[1] / (self.simu_time * cnt)
+                item[1] = 1.0 * item[1] / (self.simu_time * len(possible_opponent_cards))
 
         self.range.sort(key=lambda x: x[1], reverse=True)
         print(self.range)
