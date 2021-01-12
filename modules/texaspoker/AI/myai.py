@@ -1,5 +1,6 @@
 #-*-coding:utf-8-*-
-
+import random
+from lib.client_lib import judge_two
 
 # 假定对手均匀分布，计算胜率
 def get_win_rate(total_times, num_player, hole_card, community_card):
