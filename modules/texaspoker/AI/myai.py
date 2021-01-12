@@ -38,18 +38,21 @@ class PowerRange():
         for item in self.range:
             item[1] = 0  # 重新计数
 
+        # 当前牌库
         cards = [card for card in range(52) if card not in hole_card and card not in community_card]
         n_need_community = 5 - len(community_card)
 
+        # 所有对手可能手牌组合
         possible_opponent_cards = [x[0] for x in self.range if x[0][0] not in hole_card + community_card and x[0][1] not
                                    in hole_card + community_card]
 
+        # 对每种组合进行模拟
         for opponent_card in possible_opponent_cards:
             now_cards = [card for card in cards if card not in opponent_card]
             for x in range(self.simu_time):
                 now_community_card = community_card + random.sample(now_cards, n_need_community)
                 cmp = judge_two(hole_card + now_community_card, opponent_card + now_community_card)
-                # 对手赢
+
                 if (str(opponent_card[0]) + '#' + str(opponent_card[1])) in range_item.keys():
                     if cmp == 1:
                         key = str(opponent_card[0]) + '#' + str(opponent_card[1])
@@ -62,34 +65,7 @@ class PowerRange():
                     if cmp == -1:
                         key = str(hole_card[0]) + '#' + str(hole_card[1])
                         self.range[range_item[key]][1] += 1
-        '''     
-        for i in range(self.simu_time):
-            now_cards = cards.copy()
-            now_community_card = community_card.copy()
 
-            # 对手牌
-            opponent_card = random.sample(now_cards, 2)
-            now_cards = [card for card in now_cards if card not in opponent_card]
-            # 公共牌
-            n_need_community = 5 - len(now_community_card)
-            now_community_card += random.sample(now_cards, n_need_community)
-
-            cmp = judge_two(hole_card + now_community_card, opponent_card + now_community_card)
-
-            # 对手赢
-            if cmp != -1 and (str(opponent_card[0]) + '#' + str(opponent_card[1])) in range_item.keys():
-                key = str(opponent_card[0]) + '#' + str(opponent_card[1])
-                self.range[range_item[key]][1] += 1
-                key = str(opponent_card[1]) + '#' + str(opponent_card[0])
-                self.range[range_item[key]][1] += 1
-            
-            # 我赢
-            if cmp != 1:
-                key = str(hole_card[0]) + '#' + str(hole_card[1])
-                self.range[range_item[key]][1] += 1
-                key = str(hole_card[1]) + '#' + str(hole_card[0])
-                self.range[range_item[key]][1] += 1
-        '''
         for item in self.range:
             if item[0] != hole_card:
                 item[1] = 1.0 * item[1] / self.simu_time # 得到概率
@@ -100,6 +76,11 @@ class PowerRange():
         print(self.range)
         t_end = time.time()
         print("simulate time = ", self.simu_time, " total time = ", t_end - t_start)
+
+        for i in range(len(self.range)):
+            if hole_card[0] == self.range[i][0][0]:
+                print("My card power is top", (i + 1.0) / len(self.range) * 100, "%")
+                break
 
 
 # 假定对手均匀分布，计算胜率
