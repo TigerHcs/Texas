@@ -23,6 +23,7 @@ class PowerRange():
 
     # 根据公共牌更新range
     def update(self, hole_card, community_card):
+        hole_card.sort()
         cnt = 0
         t_start = time.time()
         range_item = {}
@@ -86,9 +87,8 @@ class PowerRange():
                 key = str(hole_card[1]) + '#' + str(hole_card[0])
                 self.range[range_item[key]][1] += 1
         '''
-        tt = [hole_card[1], hole_card[0]]
         for item in self.range:
-            if item[0] != hole_card and item[0] != tt:
+            if item[0] != hole_card:
                 item[1] = 1.0 * item[1] / self.simu_time # 得到概率
             else:
                 item[1] = 1.0 * item[1] / (self.simu_time * cnt)
