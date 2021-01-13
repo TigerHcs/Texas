@@ -1,5 +1,6 @@
 #-*-coding:utf-8-*-
-import random
+import random,sys
+sys.path.append("..")
 from lib.client_lib import judge_two
 import time
 from lib.client_lib import id2color
@@ -118,18 +119,54 @@ def get_win_rate(total_times, num_player, hole_card, community_card):
 
     return 1.0 * win_times / total_times
 
+def my_hash(cards):
+    ret = 0.0
+    for card in cards:
+        ret *= 100
+        ret += card+1
+    return ret
+def my_dehash(v):
+    ret = []
+    while v>0:
+        ret.append(v%100-1)
+        v = v//100
+    ret.reverse()
+    return ret
 
 if __name__ == '__main__':
-    my_hold = [18, 38]
-    community_card = [17, 39, 31]
-    r = []
-    r.append([my_hold, 0.5])
-    r.append([[my_hold[1], my_hold[0]], 0.5])
+    flop_list = []
     for i in range(52):
-        for j in range(i, 52):
-            if i != j and i not in my_hold and j not in my_hold and i not in community_card and j not in community_card:
-                t = random.random()
-                r.append([[i, j], t])
-
-    commuity_range = PowerRange(r, 15)
-    commuity_range.update(my_hold, community_card)
+        for j in range(i + 1, 52):
+            for k in range(j + 1, 52):
+                flop_list.append([i, j, k])
+    from tqdm import tqdm
+    from collections import defaultdict
+    import pickle
+    import itertools
+    flop_range={}
+    n = 2
+    for idx in tqdm(range(len(flop_list))):
+        flop = flop_list[idx]
+        cards = [card for card in range(52) if card not in flop]
+        cnt_win = defaultdict(int)
+        cnt_in  = defaultdict(int)
+        for C in itertools.combinations(cards, 2+2*n):
+            c = list(C)
+            com = flop + c[:2]
+            n_pairs = []
+            for i in range(n):
+                n_pairs.append(c[2*i+2:2*i+4])
+            for pair in n_pairs:
+                cnt_in[my_hash(pair)] += 1
+            cur = 0
+            for i in range(1,n):
+                cmp = judge_two(n_pairs[cur]+com, n_pairs[i]+com)
+                if cmp >= 0:
+                    cur = i
+            cnt_win[my_hash(n_pairs[cur])] += 1
+        for key in cnt_win.keys():
+            cnt_win[key] = cnt_win[key] / cnt_in[key]
+        flop_range[my_hash(flop)] = cnt_win
+        with open('flop_range','wb') as f:
+            pickle.dump(flop_range,f)
+        break
