@@ -358,14 +358,16 @@ class Player(object):
             pass
         # 不知道具体怎么弄， 留空
         elif act_list[0] == "call bet":
-            pot_rate = act_list[1] / act_list[2]
-            pocket_rate = act_list[1] / act_list[3]
+            pot_rate = int(act_list[1]) / int(act_list[2])
+            pocket_rate = int(act_list[1]) / int(act_list[3])
             self.range = self.range * self.call_factor
+            print(pocket_rate, pot_rate)
 
         elif act_list[0] == "raise":
-            pot_rate = act_list[1] / act_list[2]
-            pocket_rate = act_list[1] / act_list[3]
+            pot_rate = int(act_list[1]) / int(act_list[2])
+            pocket_rate = int(act_list[1]) /int( act_list[3])
             self.range = self.range * self.call_factor
+            print(pocket_rate, pot_rate)
 
         elif act_list[0] == "all in":
             self.range = self.range * self.allin_factor
