@@ -5,6 +5,7 @@ import time
 from lib.client_lib import id2color
 from lib.client_lib import id2num
 from lib.client_lib import Player
+from lib.client_lib import Decision
 
 
 def id2str(cards):
@@ -16,8 +17,8 @@ def id2str(cards):
     return ans
 
 
-class MyPlayer(Player):
-    pass
+def card2str(cards):
+    return str(cards[0]) + "#" + str(cards[1])
 
 
 # 范围类
@@ -83,53 +84,48 @@ class PowerRange():
                 break
 
 
-# 假定对手均匀分布，计算胜率
-def get_win_rate(total_times, num_player, hole_card, community_card):
-    win_times = 0
-    cards = [card for card in range(52) if card not in hole_card and card not in community_card]
-    for i in range(total_times):
-        now_cards = cards.copy()
-        now_community_card = community_card.copy()
-        '''
-        # 给对手发牌
-        for j in range(num_player - 1):
-            t = random.sample(now_cards, 2)
-            opponents_cards.append(t)
-            now_cards = [card for card in now_cards if card not in t]
-        # 发公共牌
-        n_need_community = 5 - len(now_community_card)
-        now_community_card += random.sample(now_cards, n_need_community)
-        '''
-        # 发公共牌
-        n_need_community = 5 - len(now_community_card)
-        now_community_card += random.sample(now_cards, n_need_community)
-        now_cards = [card for card in now_cards if card not in now_community_card]
-        # 发对手牌
-        t = random.sample(now_cards, (num_player - 1) * 2)
-        opponents_cards = [t[2*i:2*i+2] for i in range(num_player - 1)]
-        # 计算胜者
-        for j in range(num_player - 1):
-            # cmp == 1 说明比某人小
-            cmp = judge_two(hole_card + now_community_card, opponents_cards[j] + now_community_card)
-            if cmp == 1:
-                break
-        if cmp != 1:
-            win_times += 1
+# 胜率
+def get_win_rate():
+    return 1
 
-    return 1.0 * win_times / total_times
+
+# 赔率
+def get_odds(id, state):
+    need_bet = state.minbet - state.player[id].totalbet   # 不太确定是bet还是totalbet
+    return need_bet / (need_bet + state.moneypot)
+
+
+def my_ai(id, state):
+    win_odd_factor = 0.1
+    check_raise = 0.4
+    cards = state.sharedcards + state.player[id].cards
+    win_rate = get_win_rate()
+    odds = get_odds(id, state)
+
+    decision = Decision()
+    delta = state.minbet - state.player[id].totalbet  # 不太确定是bet还是totalbet
+
+    if id >= state.playernum - 2:  # 后置位
+        if win_rate > odds + win_odd_factor:  # 胜率大幅高于赔率
+            t = random.random()
+            if t < check_raise:
+                pass
+            else:
+                decision.check = 1
+
+        elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:   # 胜率约等于赔率
+            pass
+
+        else:  # 胜率大幅低于赔率
+            decision.giveup = 1
+
+    else:  # 前置位
+        pass
 
 
 if __name__ == '__main__':
-    my_hold = [18, 38]
-    community_card = [17, 39, 31]
-    r = []
-    r.append([my_hold, 0.5])
-    r.append([[my_hold[1], my_hold[0]], 0.5])
-    for i in range(52):
-        for j in range(i, 52):
-            if i != j and i not in my_hold and j not in my_hold and i not in community_card and j not in community_card:
-                t = random.random()
-                r.append([[i, j], t])
-
-    commuity_range = PowerRange(r, 15)
-    commuity_range.update(my_hold, community_card)
+    player = Player(1000, 1)
+    player.add_action(0, "check")
+    player.add_action(1, "give up")
+    player.add_action(2, "raise#100#50#2000")
+    player.add_action(3, "call bet#100#200#2000")
