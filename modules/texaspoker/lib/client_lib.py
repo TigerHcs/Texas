@@ -305,6 +305,7 @@ def judge_two(cards0, cards1):
             # assert 0
         return 0
 
+
 class Player(object):
 
     def __init__(self, initMoney, state):
@@ -315,6 +316,11 @@ class Player(object):
         self.allin = 0          # if the player has all in
         self.totalbet = 0       # the bet in total(all round)
         self.state = state      # state
+        self.actions = {}       # 动作, 是一个dict， key是轮次， value是一个list，记录本轮动作
+        self.range = 1          # 本player的范围，初始为1表示全范围，和这个player的加注量成负向关系
+        self.allin_factor = 0.2
+        self.raise_factor = 0.3
+        self.call_factor = 0.6
 
         ## user data
         self.username = ''
@@ -339,6 +345,36 @@ class Player(object):
 
     def getcards(self):
         return self.cards + self.state.sharedcards
+
+    def add_action(self, num_turn, action):
+        if num_turn not in self.actions.keys():
+            self.actions[num_turn] = []
+        self.actions[num_turn].append(action)
+
+        act_list = action.split("#")
+        if act_list[0] == "give up":
+            pass
+        elif act_list[0] == "check":
+            pass
+        # 不知道具体怎么弄， 留空
+        elif act_list[0] == "call bet":
+            pot_rate = act_list[1] / act_list[2]
+            pocket_rate = act_list[1] / act_list[3]
+            self.range = self.range * self.call_factor
+
+        elif act_list[0] == "raise":
+            pot_rate = act_list[1] / act_list[2]
+            pocket_rate = act_list[1] / act_list[3]
+            self.range = self.range * self.call_factor
+
+        elif act_list[0] == "all in":
+            self.range = self.range * self.allin_factor
+
+
+
+    def clear_bet_record(self):
+        self.range = 1
+        self.actions = {}
 
     def __str__(self):
         return 'player: active = %s, money = %s, bet = %s, allin = %s' % (self.active, self.money, self.bet, self.allin)
