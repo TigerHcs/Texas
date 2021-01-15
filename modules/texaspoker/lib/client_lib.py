@@ -382,7 +382,6 @@ class Player(object):
         return 'player: active = %s, money = %s, bet = %s, allin = %s' % (self.active, self.money, self.bet, self.allin)
 
 
-
 class State(object):
     def __init__(self, logger, totalPlayer, initMoney, bigBlind, button):
         ''' class to hold the game '''
