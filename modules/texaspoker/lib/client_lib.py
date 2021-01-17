@@ -1,6 +1,7 @@
 from time import sleep
 import communicate.dealer_pb2 as dealer_pb2
 import communicate.dealer_pb2_grpc as rpc
+from AI.range_util import *
 
 # V1.4
 # 0 黑桃 1 红桃 2 方片 3 草花
@@ -218,7 +219,7 @@ class Hand(object):
         return 'level = %s' % self.level
 
 
-def cmp(x,y):  # x < y return 1
+def cmp(x, y):  # x < y return 1
     if x > y: return -1
     elif x == y: return 0
     else: return 1
@@ -317,9 +318,9 @@ class Player(object):
         self.totalbet = 0       # the bet in total(all round)
         self.state = state      # state
         self.actions = {}       # 动作, 是一个dict， key是轮次， value是一个list，记录本轮动作
-        self.range = 1          # 本player的范围，初始为1表示全范围，和这个player的加注量成负向关系
+        self.range = []         # 本player的范围，初始表示全范围，和这个player的加注量成负向关系
         self.allin_factor = 0.2
-        self.raise_factor = 0.3
+        self.raise_factor = 0.4
         self.call_factor = 0.6
 
         ## user data
@@ -346,7 +347,14 @@ class Player(object):
     def getcards(self):
         return self.cards + self.state.sharedcards
 
-    def add_action(self, num_turn, action):
+    def add_action(self, my_cards, community_cards, num_turn, action):
+
+        if len(self.range) == 0:
+            now_cards = [card for card in range(52) if card not in my_cards and card not in community_cards]
+            for index1 in range(len(now_cards)):
+                for index2 in range(index1 + 1, len(now_cards)):
+                    self.range.append([index1, index2])
+
         if num_turn not in self.actions.keys():
             self.actions[num_turn] = []
         self.actions[num_turn].append(action)
@@ -355,27 +363,47 @@ class Player(object):
         if act_list[0] == "give up":
             pass
         elif act_list[0] == "check":
+            #self.range = update_range(my_cards, community_cards, self.range, 1)
             pass
         # 不知道具体怎么弄， 留空
         elif act_list[0] == "call bet":
-            pot_rate = int(act_list[1]) / int(act_list[2])
+            if int(act_list[2]) != 0:
+                pot_rate = int(act_list[1]) / int(act_list[2])
+            else:
+                pot_rate = 0
             pocket_rate = int(act_list[1]) / int(act_list[3])
-            self.range = self.range * self.call_factor
-            print(pocket_rate, pot_rate)
+            self.range = self.range[:int(len(self.range) * self.call_factor)]
+            '''
+            self.range = update_range(my_cards, community_cards, self.range, 1)
+            '''
+            print("player ", self.username, " new range is ", self.range)
 
         elif act_list[0] == "raise":
-            pot_rate = int(act_list[1]) / int(act_list[2])
-            pocket_rate = int(act_list[1]) /int( act_list[3])
-            self.range = self.range * self.call_factor
-            print(pocket_rate, pot_rate)
+            if int(act_list[2]) != 0:
+                pot_rate = int(act_list[1]) / int(act_list[2])
+            else:
+                pot_rate = 0
+            pocket_rate = int(act_list[1]) /int(act_list[3])
+
+            if pot_rate >= 4:
+                self.range = self.range[:int(len(self.range) * self.allin_factor)]
+            else:
+                self.range = self.range[:int(len(self.range) * self.raise_factor * (1 - pot_rate/10))]
+
+            self.range = update_range(my_cards, community_cards, self.range, 1)
+
+            print("player ", self.username, " new range is ", self.range)
 
         elif act_list[0] == "all in":
-            self.range = self.range * self.allin_factor
+            self.range = self.range[:int(len(self.range) * self.allin_factor)]
+
+            # self.range = update_range(my_cards, community_cards, self.range, 1)
+            print("player ", self.username, " new range is ", self.range)
 
 
 
     def clear_bet_record(self):
-        self.range = 1
+        self.range = []
         self.actions = {}
 
     def __str__(self):
@@ -389,7 +417,7 @@ class State(object):
         self.bigBlind = bigBlind       # bigBlind, every bet should be multiple of smallBlind which is half of bigBlind.
         self.button = button           # the button position
         self.currpos = 0               # current position
-        self.playernum = 0             # active player number
+        self.playernum = totalPlayer   # active player number
         self.moneypot = 0              # money in the pot
         self.minbet = bigBlind         # minimum bet to call in this round, total bet
         self.sharedcards = []          # shared careds in the game
