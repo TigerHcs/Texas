@@ -1,5 +1,6 @@
 import pickle
 from collections import defaultdict
+import os
 
 def my_hash(cards):
     ret = 0
@@ -16,9 +17,9 @@ def my_dehash(v):
     return ret
 
 class RangeUtil():
-    def __init__(self):
-        self.origin_range_filename = "origin_range"
-        self.flop_range_filename = "flop_range"
+    def __init__(self, path):
+        self.origin_range_filename = os.path.join(path, "data/origin_range")
+        self.flop_range_filename = os.path.join(path, "data/flop_range")
         with open(self.flop_range_filename, 'rb') as f:
             self.flop_range = pickle.load(f)
         with open(self.origin_range_filename, 'rb') as f:

@@ -35,6 +35,7 @@ from lib.client_lib import MessageType_GameStarted
 from lib.client_lib import MessageType_IllegalDecision
 from lib.simple_logger import simple_logger
 from lib.client_lib import judge_two
+from AI.range_util import *
 # *******************************************************************************************
 
 
@@ -77,6 +78,7 @@ class Client(object):
         self.key = 'NULL'
 
         self.cond = threading.Condition()
+        self.range_util = RangeUtil("../AI")
 
         if os.path.exists(key_file):
             self.key = open(key_file).read()
@@ -198,10 +200,10 @@ class Client(object):
                 if res.giveup == 1:
                     self.state.player[self.state.currpos].active = False
                     self.state.playernum -= 1
-                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, "give up")
                 elif res.check == 1:
-                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, "check")
                 elif res.allin == 1:
                     self.state.moneypot += self.state.player[self.state.currpos].money
@@ -209,7 +211,8 @@ class Client(object):
                     if self.state.player[self.state.currpos].bet > self.state.minbet:
                         self.state.last_raised = max(self.state.player[self.state.currpos].bet - self.state.minbet, self.state.last_raised)
                         self.state.minbet = self.state.player[self.state.currpos].bet
-                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+
+                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, "all in")
                 elif res.callbet == 1:
                     delta = self.state.minbet - self.state.player[self.state.currpos].bet
@@ -218,7 +221,8 @@ class Client(object):
                     mesg = "call bet#" + str(delta) + \
                            "#" + str(self.state.moneypot - delta) + \
                            "#" + str(delta + self.state.player[self.state.currpos].money)
-                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+
+                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, mesg)
 
                 elif res.raisebet == 1:
@@ -230,7 +234,8 @@ class Client(object):
                     mesg = "raise#" + str(delta) + \
                            "#" + str(self.state.moneypot - delta) + \
                            "#" + str(delta + self.state.player[self.state.currpos].money)
-                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+
+                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, mesg)  # 加注量 和 池中筹码 和 此人总筹码数
 
                 else:
@@ -392,8 +397,8 @@ class ClientJob(object):
 if __name__ == '__main__':
 # ************************************ modify here to use your own username! ***********************
 
-    if len(sys.argv) == 1:
-        print('Error: enter the name for the client!')
+    # if len(sys.argv) == 1:
+        # print('Error: enter the name for the client!')
     #username = sys.argv[1]
     username = "01Linus"
     logger = simple_logger()

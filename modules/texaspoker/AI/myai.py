@@ -188,6 +188,19 @@ def my_ai(id, state):
                     decision.callbet = 1
     return decision
 
+def add_bet(state, total):
+    # amount: 本局需要下的总注
+    amount = total - state.player[state.currpos].totalbet
+    assert(amount > state.player[state.currpos].bet)
+    # Obey the rule of last_raised
+    minamount = state.last_raised + state.minbet
+    real_amount = max(amount, minamount)
+    # money_needed = real_amount - state.player[state.currpos].bet
+    decision = Decision()
+    decision.raisebet = 1
+    decision.amount = real_amount
+    return decision
+
 
 if __name__ == '__main__':
     player = Player(1000, 1)

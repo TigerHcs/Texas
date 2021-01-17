@@ -347,7 +347,7 @@ class Player(object):
     def getcards(self):
         return self.cards + self.state.sharedcards
 
-    def add_action(self, my_cards, community_cards, num_turn, action):
+    def add_action(self, range_util, my_cards, community_cards, num_turn, action):
 
         if len(self.range) == 0:
             now_cards = [card for card in range(52) if card not in my_cards and card not in community_cards]
@@ -373,9 +373,9 @@ class Player(object):
                 pot_rate = 0
             pocket_rate = int(act_list[1]) / int(act_list[3])
             self.range = self.range[:int(len(self.range) * self.call_factor)]
-            '''
-            self.range = update_range(my_cards, community_cards, self.range, 1)
-            '''
+
+            self.range = range_util.update_range(my_cards, community_cards, self.range, 1)
+
             print("player ", self.username, " new range is ", self.range)
 
         elif act_list[0] == "raise":
@@ -390,14 +390,15 @@ class Player(object):
             else:
                 self.range = self.range[:int(len(self.range) * self.raise_factor * (1 - pot_rate/10))]
 
-            self.range = update_range(my_cards, community_cards, self.range, 1)
+            self.range = range_util.update_range(my_cards, community_cards, self.range, 1)
 
             print("player ", self.username, " new range is ", self.range)
 
         elif act_list[0] == "all in":
             self.range = self.range[:int(len(self.range) * self.allin_factor)]
 
-            # self.range = update_range(my_cards, community_cards, self.range, 1)
+            self.range = range_util.update_range(my_cards, community_cards, self.range, 1)
+
             print("player ", self.username, " new range is ", self.range)
 
 
