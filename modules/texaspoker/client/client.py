@@ -42,13 +42,14 @@ from lib.client_lib import judge_two
 
 # **************************************modify here to use your own AI! ***************************
 from AI.v1_1 import ai
+from AI.myai import my_ai
 # *************************************************************************************************
 
 
 
 # **************************************modify here to set address and port ***********************
 address = '47.103.23.116'
-port = 56703
+port = 56710
 # *************************************************************************************************
 
 
@@ -66,6 +67,7 @@ port = 56703
 
 
 CLIENT_VERSION = 'V1.4'
+
 
 class Client(object):
     def __init__(self, u: str, AI, logger, pos=0):
@@ -166,6 +168,12 @@ class Client(object):
             self._new_response.append(res)
             # if self.stoped:
             #     break
+
+            # 如果本轮游戏结束，清空player下注记录
+            if self.state.round_over() == 1:
+                for player in self.state.player:
+                    player.clear_bet_record()
+
             if res.type == MessageType_GameDecision:
                 # server asking for a decision from the client
                 self.state.currpos = res.pos
@@ -190,18 +198,28 @@ class Client(object):
                 if res.giveup == 1:
                     self.state.player[self.state.currpos].active = False
                     self.state.playernum -= 1
+                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+                                                                     self.state.sharedcards, self.state.turnNum, "give up")
                 elif res.check == 1:
-                    pass
+                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+                                                                     self.state.sharedcards, self.state.turnNum, "check")
                 elif res.allin == 1:
                     self.state.moneypot += self.state.player[self.state.currpos].money
                     self.state.player[self.state.currpos].allinbet()
                     if self.state.player[self.state.currpos].bet > self.state.minbet:
                         self.state.last_raised = max(self.state.player[self.state.currpos].bet - self.state.minbet, self.state.last_raised)
                         self.state.minbet = self.state.player[self.state.currpos].bet
+                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+                                                                     self.state.sharedcards, self.state.turnNum, "all in")
                 elif res.callbet == 1:
                     delta = self.state.minbet - self.state.player[self.state.currpos].bet
                     self.state.player[self.state.currpos].raisebet(delta)
                     self.state.moneypot += delta
+                    mesg = "call bet#" + str(delta) + \
+                           "#" + str(self.state.moneypot - delta) + \
+                           "#" + str(delta + self.state.player[self.state.currpos].money)
+                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+                                                                     self.state.sharedcards, self.state.turnNum, mesg)
 
                 elif res.raisebet == 1:
                     self.state.last_raised = max(res.amount - self.state.minbet, self.state.last_raised)
@@ -209,6 +227,11 @@ class Client(object):
                     delta = res.amount - self.state.player[self.state.currpos].bet
                     self.state.player[self.state.currpos].raisebet(delta)
                     self.state.moneypot += delta
+                    mesg = "raise#" + str(delta) + \
+                           "#" + str(self.state.moneypot - delta) + \
+                           "#" + str(delta + self.state.player[self.state.currpos].money)
+                    self.state.player[self.state.currpos].add_action(self.state.player[self.mypos].cards,
+                                                                     self.state.sharedcards, self.state.turnNum, mesg)  # 加注量 和 池中筹码 和 此人总筹码数
 
                 else:
                     self.logger.info('impossible condition')
@@ -223,7 +246,7 @@ class Client(object):
                 self.step += 1
 
             elif res.type == MessageType_IllegalDecision:
-                self.logger.info('player at pos {} illegalMove and is forced to give up. actionNum {}'.format(res.pos, res.actionNum));
+                self.logger.info('player at pos {} illegalMove and is forced to give up. actionNum {}'.format(res.pos, res.actionNum))
                 self.state.player[self.state.currpos].active = False
                 self.state.playernum -= 1
 
@@ -379,7 +402,7 @@ if __name__ == '__main__':
 
 # ************************************ modify here to use your own AI! ********************************
 
-    c = Client(username, ai, logger)
+    c = Client(username, my_ai, logger)
     ClientJob(c).run()
 
 # ****************************************************************************************************

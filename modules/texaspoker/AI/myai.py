@@ -1,4 +1,4 @@
-#-*-coding:utf-8-*-
+# -*-coding:utf-8-*-
 import random
 from lib.client_lib import judge_two
 import time
@@ -21,106 +21,172 @@ def card2str(cards):
     return str(cards[0]) + "#" + str(cards[1])
 
 
-# 范围类
-class PowerRange():
-    # 翻牌前 范围是一个定值， 以一个list表示
-    def __init__(self, r, num):
-        self.range = r
-        self.simu_time = num  # 对每个pair模拟
-
-    # 根据公共牌更新range
-    def update(self, hole_card, community_card):
-        hole_card.sort()
-        t_start = time.time()
-        range_item = {}
-        for i in range(len(self.range)):
-            key = str(self.range[i][0][0]) + '#' + str(self.range[i][0][1])
-            range_item[key] = i
-        for item in self.range:
-            item[1] = 0  # 重新计数
-
-        # 当前牌库
-        cards = [card for card in range(52) if card not in hole_card and card not in community_card]
-        n_need_community = 5 - len(community_card)
-
-        # 所有对手可能手牌组合
-        possible_opponent_cards = [x[0] for x in self.range if x[0][0] not in hole_card + community_card and x[0][1] not
-                                   in hole_card + community_card]
-
-        # 对每种组合进行模拟
-        for opponent_card in possible_opponent_cards:
-            now_cards = [card for card in cards if card not in opponent_card]
-            for x in range(self.simu_time):
-                now_community_card = community_card + random.sample(now_cards, n_need_community)
-                cmp = judge_two(hole_card + now_community_card, opponent_card + now_community_card)
-
-                if (str(opponent_card[0]) + '#' + str(opponent_card[1])) in range_item.keys():
-                    if cmp == 1:
-                        key = str(opponent_card[0]) + '#' + str(opponent_card[1])
-                        self.range[range_item[key]][1] += 1
-
-                    elif cmp == 0:
-                        key = str(opponent_card[0]) + '#' + str(opponent_card[1])
-                        self.range[range_item[key]][1] += 0.5
-
-                    if cmp == -1:
-                        key = str(hole_card[0]) + '#' + str(hole_card[1])
-                        self.range[range_item[key]][1] += 1
-
-        for item in self.range:
-            if item[0] != hole_card:
-                item[1] = 1.0 * item[1] / self.simu_time # 得到概率
-            else:
-                item[1] = 1.0 * item[1] / (self.simu_time * len(possible_opponent_cards))
-
-        self.range.sort(key=lambda x: x[1], reverse=True)
-        print(self.range)
-        t_end = time.time()
-        print("simulate time = ", self.simu_time, " total time = ", t_end - t_start)
-
-        for i in range(len(self.range)):
-            if hole_card[0] == self.range[i][0][0]:
-                print("My card power is top", (i + 1.0) / len(self.range) * 100, "%")
-                break
-
-
 # 胜率
 def get_win_rate():
-    return 1
+    return 0.5
 
 
 # 赔率
 def get_odds(id, state):
-    need_bet = state.minbet - state.player[id].totalbet   # 不太确定是bet还是totalbet
+    need_bet = state.minbet - state.player[id].bet  # 不太确定是bet还是totalbet
     return need_bet / (need_bet + state.moneypot)
 
 
+# 前后置位判断, 针对3人桌, 0 bottom, 1 small blind, 2 big blind
+def pos_judge(id, state):
+    bottom = 0
+    small_blind = 1
+    big_blind = 2
+    if state.playernum == 2:
+        if state.turnNum == 0:
+            if id == bottom:
+                is_prepos = True
+            elif id == big_blind:
+                is_prepos = False
+            else:
+                if state.player[big_blind].active:
+                    is_prepos = True
+                else:
+                    is_prepos = False
+        else:
+            if id == small_blind:
+                is_prepos = True
+            elif id == bottom:
+                is_prepos = False
+            else:
+                if state.player[bottom].active:
+                    is_prepos = True
+                else:
+                    is_prepos = False
+
+    else:
+        if state.turnNum == 0:
+            is_prepos = True if id == 0 or id == 1 else False
+        else:
+            is_prepos = True if id == 1 or id == 2 else False
+    return is_prepos
+
+
 def my_ai(id, state):
+    small_blind = 20
+    big_blind = 40
+    shot_case1 = 0.5  # 加注量
+    shot_case2 = 1
+    shot_case3 = 2
+    shot_case4 = 4
     win_odd_factor = 0.1
-    check_raise = 0.4
+    check_or_raise_front = 0.2
+    check_or_raise_behind = 0.4
+    first_shot = 0.2
+
     cards = state.sharedcards + state.player[id].cards
     win_rate = get_win_rate()
     odds = get_odds(id, state)
 
     decision = Decision()
-    delta = state.minbet - state.player[id].totalbet  # 不太确定是bet还是totalbet
+    delta = state.minbet - state.player[id].betd
 
-    if id >= state.playernum - 2:  # 后置位
-        if win_rate > odds + win_odd_factor:  # 胜率大幅高于赔率
-            t = random.random()
-            if t < check_raise:
-                pass
-            else:
+    is_prepos = pos_judge(id, state)
+
+    # 最少加注量， state.last_raised
+    # 我方主动，最低需要check
+    if delta == 0:
+        # 后置位
+        if not is_prepos:
+            # 胜率大幅高于赔率
+            if win_rate > odds + win_odd_factor:
+                t = random.random()
+                if t <= check_or_raise_behind:
+                    decision.raisebet = 1
+                    decision.amount = 1 * state.moneypot if random.random() >= 0.5 else 2 * state.moneypot
+                else:
+                    decision.check = 1
+
+            # 胜率约等于赔率
+            elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:
                 decision.check = 1
 
-        elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:   # 胜率约等于赔率
-            pass
+            # 胜率大幅低于赔率
+            else:
+                if delta > small_blind:
+                    decision.giveup = 1
+                else:
+                    decision.check = 1
 
-        else:  # 胜率大幅低于赔率
-            decision.giveup = 1
+        # 前置位
+        else:
+            # 胜率大幅高于赔率
+            if win_rate > odds + win_odd_factor:
+                t = random.random()
+                if t <= check_or_raise_front:
+                    decision.raisebet = 1
+                    decision.amount = 1 * state.moneypot if random.random() >= 0.5 else 2 * state.moneypot
+                else:
+                    decision.check = 1
 
-    else:  # 前置位
-        pass
+            # 胜率约等于赔率
+            elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:
+                decision.check = 1
+
+            # 胜率大幅低于赔率
+            else:
+                if delta > small_blind:
+                    decision.giveup = 1
+                else:
+                    decision.check = 1
+
+    # 我方被动，最低需要call
+    else:
+        # 后置位，最低需要call
+        if not is_prepos:
+            # 胜率大幅高于赔率
+            if win_rate > odds + win_odd_factor:
+                t = random.random()
+                if t <= check_or_raise_behind:
+                    if delta >= state.moneypot:
+                        decision.callbet = 1
+                    else:
+                        decision.raisebet = 1
+                        decision.amount = state.moneypot
+                else:
+                    decision.callbet = 1
+
+            # 胜率约等于赔率
+            elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:
+                decision.callbet = 1
+
+            # 胜率大幅低于赔率
+            else:
+                if delta > small_blind:
+                    decision.giveup = 1
+                else:
+                    decision.callbet = 1
+
+        # 前置位，最低需要call
+        else:
+            # 胜率大幅高于赔率
+            if win_rate > odds + win_odd_factor:
+                t = random.random()
+                if t <= check_or_raise_front:
+                    if delta >= state.moneypot:
+                        decision.callbet = 1
+                    else:
+                        decision.raisebet = 1
+                        decision.amount = state.moneypot
+                else:
+                    decision.callbet = 1
+
+            # 胜率约等于赔率
+            elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:
+                decision.callbet = 1
+
+            # 胜率大幅低于赔率
+            else:
+                if delta > small_blind:
+                    decision.giveup = 1
+                else:
+                    decision.callbet = 1
+    return decision
 
 
 if __name__ == '__main__':
