@@ -319,9 +319,10 @@ class Player(object):
         self.state = state      # state
         self.actions = {}       # 动作, 是一个dict， key是轮次， value是一个list，记录本轮动作
         self.range = []         # 本player的范围，初始表示全范围，和这个player的加注量成负向关系
-        self.allin_factor = 0.2
-        self.raise_factor = 0.4
-        self.call_factor = 0.6
+        self.raise_factor = 0.2
+        self.raise_upper_num = 10
+        self.raise_upper_rate = 0.02
+        self.call_factor = 0.5
 
         ## user data
         self.username = ''
@@ -363,44 +364,71 @@ class Player(object):
         if act_list[0] == "give up":
             pass
         elif act_list[0] == "check":
-            #self.range = update_range(my_cards, community_cards, self.range, 1)
             pass
+
         # 不知道具体怎么弄， 留空
         elif act_list[0] == "call bet":
-            if int(act_list[2]) != 0:
+            if num_turn == 0 and int(act_list[1]) <= 40:
+                pot_rate = 0
+            elif int(act_list[2]) != 0:
                 pot_rate = int(act_list[1]) / int(act_list[2])
             else:
                 pot_rate = 0
-            pocket_rate = int(act_list[1]) / int(act_list[3])
-            self.range = self.range[:int(len(self.range) * self.call_factor)]
 
-            self.range = range_util.update_range(my_cards, community_cards, self.range, 1)
+            if pot_rate == 0:
+                pass
+            elif pot_rate >= 2:
+                new_upper = int(len(self.range) * 0.05) if int(len(self.range) * 0.05) >= 20 else 20
+                self.range = self.range[:new_upper]
+            else:
+                rate = self.call_factor - 0.175 * pot_rate
+                new_upper = int(len(self.range) * rate) if int(len(self.range) * rate) >= 20 else 20
+                self.range = self.range[:new_upper]
 
-            print("player ", self.username, " new range is ", self.range)
+            self.range = range_util.update_range(my_cards, community_cards, self.range)
 
         elif act_list[0] == "raise":
-            if int(act_list[2]) != 0:
+            if num_turn == 0 and int(act_list[1]) <= 40:
+                pot_rate = 0
+            elif int(act_list[2]) != 0:
                 pot_rate = int(act_list[1]) / int(act_list[2])
             else:
                 pot_rate = 0
-            pocket_rate = int(act_list[1]) /int(act_list[3])
 
-            if pot_rate >= 4:
-                self.range = self.range[:int(len(self.range) * self.allin_factor)]
+            if pot_rate == 0:
+                pass
+            elif pot_rate >= 2:
+                new_upper = int(len(self.range) * 0.02) if int(len(self.range) * 0.02) >= self.raise_upper_num else self.raise_upper_num
+                self.range = self.range[:new_upper]
             else:
-                self.range = self.range[:int(len(self.range) * self.raise_factor * (1 - pot_rate/10))]
+                rate = self.raise_factor - 0.09 * pot_rate
+                new_upper = int(len(self.range) * rate) if int(len(self.range) * rate) >= self.raise_upper_num else self.raise_upper_num
+                self.range = self.range[:new_upper]
 
-            self.range = range_util.update_range(my_cards, community_cards, self.range, 1)
-
-            print("player ", self.username, " new range is ", self.range)
+            self.range = range_util.update_range(my_cards, community_cards, self.range)
 
         elif act_list[0] == "all in":
-            self.range = self.range[:int(len(self.range) * self.allin_factor)]
+            if num_turn == 0 and int(act_list[1]) <= 40:
+                pot_rate = 0
+            elif int(act_list[2]) != 0:
+                pot_rate = int(act_list[1]) / int(act_list[2])
+            else:
+                pot_rate = 0
 
-            self.range = range_util.update_range(my_cards, community_cards, self.range, 1)
+            # 暂且先按raise算
+            if pot_rate == 0:
+                pass
+            elif pot_rate >= 2:
+                new_upper = int(len(self.range) * 0.02) if int(
+                    len(self.range) * 0.02) >= self.raise_upper_num else self.raise_upper_num
+                self.range = self.range[:new_upper]
+            else:
+                rate = self.raise_factor - 0.09 * pot_rate
+                new_upper = int(len(self.range) * rate) if int(
+                    len(self.range) * rate) >= self.raise_upper_num else self.raise_upper_num
+                self.range = self.range[:new_upper]
 
-            print("player ", self.username, " new range is ", self.range)
-
+            self.range = range_util.update_range(my_cards, community_cards, self.range)
 
 
     def clear_bet_record(self):
@@ -424,6 +452,7 @@ class State(object):
         self.sharedcards = []          # shared careds in the game
         self.turnNum = 0               # 0, 1, 2, 3 for pre-flop round, flop round, turn round and river round
         self.last_raised = bigBlind    # the amount of bet raise last time
+        self.last_raised_id = -1
         self.player = []               # All players. You can check them to help your decision. The 'cards' field of other player is not visiable for sure.
         for i in range(totalPlayer):
             self.player.append(Player(initMoney, self))

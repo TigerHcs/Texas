@@ -22,13 +22,42 @@ def card2str(cards):
 
 
 # 胜率
-def get_win_rate():
-    return 0.5
+def get_win_rate(id, state, my_card):
+    community_card = state.sharedcards
+    num_need_cards = 5 - len(community_card)
+    active_players = []
+    win_time = 0
+    simulate_time = 10000
+    for index in range(len(state.player)):
+        if index != id and state.player[index].active:
+            active_players.append(state.player[index])
+
+    for time in range(simulate_time):
+        used_card = my_card + community_card
+        c_cards = community_card.copy()
+        opponent_cards = []
+        for player in active_players:
+            t = random.sample(player.range, 1)[0]
+            while t[0] in used_card or t[1] in used_card:
+                t = random.sample(player.range, 1)[0]
+            used_card += t
+            opponent_cards.append(t)
+
+        now_cards = [card for card in range(52) if card not in used_card]
+        c_cards += random.sample(now_cards, num_need_cards)
+        for oppoent_card in opponent_cards:
+            cmp = judge_two(my_card + c_cards, oppoent_card + c_cards)
+            if cmp == 1:
+                break
+        if cmp != 1:
+            win_time += 1
+
+    return 1.0 * win_time / simulate_time
 
 
 # 赔率
 def get_odds(id, state):
-    need_bet = state.minbet - state.player[id].bet  # 不太确定是bet还是totalbet
+    need_bet = state.minbet - state.player[id].bet
     return need_bet / (need_bet + state.moneypot)
 
 
@@ -67,27 +96,38 @@ def pos_judge(id, state):
     return is_prepos
 
 
-def my_ai(id, state):
+def my_ai(id, state, username):
     small_blind = 20
     big_blind = 40
-    shot_case1 = 0.5  # 加注量
-    shot_case2 = 1
-    shot_case3 = 2
-    shot_case4 = 4
+    shot_case1 = 0.4
+    shot_case2 = 0.75
+    shot_case3 = 1.25
     win_odd_factor = 0.1
     check_or_raise_front = 0.2
     check_or_raise_behind = 0.4
     first_shot = 0.2
 
-    cards = state.sharedcards + state.player[id].cards
-    win_rate = get_win_rate()
+    win_rate = get_win_rate(id, state, state.player[id].cards)
     odds = get_odds(id, state)
 
     decision = Decision()
-    delta = state.minbet - state.player[id].betd
+    delta = state.minbet - state.player[id].bet
 
     is_prepos = pos_judge(id, state)
 
+    file = open(username + ".txt", "a")
+    file.write("turn num is " + str(state.turnNum) +
+               " shared cards are : " + " ".join(id2str(state.sharedcards)) + "\n")
+    for index in range(len(state.player)):
+        if index != id and state.player[index].active:
+            file.write("player " + str(index) + " range : " + str(len(state.player[index].range)) +
+                       " this turn bet : " + str(state.player[index].bet) +
+                       " total bet : " + str(state.player[index].totalbet) + "\n")
+
+    file.write("my bet : " + str(state.player[id].bet) + " my total bet : " + str(state.player[id].totalbet) + "\n")
+    file.write("my card is " + " ".join(id2str(state.player[id].cards)) + " my win rate is " + str(win_rate) + " my odds is " + str(odds) + "\n")
+
+    '''
     # 最少加注量， state.last_raised
     # 我方主动，最低需要check
     if delta == 0:
@@ -186,6 +226,16 @@ def my_ai(id, state):
                     decision.giveup = 1
                 else:
                     decision.callbet = 1
+    '''
+    if state.turnNum == 0:
+        pass
+    elif state.turnNum == 1:
+        pass
+    elif state.turnNum == 2:
+        pass
+    elif state.turnNum == 3:
+        pass
+    file.close()
     return decision
 
 def add_bet(state, total):
@@ -204,7 +254,3 @@ def add_bet(state, total):
 
 if __name__ == '__main__':
     player = Player(1000, 1)
-    player.add_action(0, "check")
-    player.add_action(1, "give up")
-    player.add_action(2, "raise#100#50#2000")
-    player.add_action(3, "call bet#100#200#2000")

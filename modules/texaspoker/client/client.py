@@ -2,7 +2,7 @@ import sys
 import threading
 import grpc
 import sys
-from  pathlib import Path
+from pathlib import Path
 import time
 import os
 import random
@@ -173,6 +173,7 @@ class Client(object):
 
             # 如果本轮游戏结束，清空player下注记录
             if self.state.round_over() == 1:
+                self.last_raised = -1
                 for player in self.state.player:
                     player.clear_bet_record()
 
@@ -180,7 +181,7 @@ class Client(object):
                 # server asking for a decision from the client
                 self.state.currpos = res.pos
                 if res.pos == self.mypos:
-                    decision = self.ai(self.mypos, self.state)
+                    decision = self.ai(self.mypos, self.state, self.username)
                     if not decision.isValid():
                         self.logger.info('$$$ This client made a invalid decision')
                         print(decision, flush=True)
@@ -206,6 +207,7 @@ class Client(object):
                     self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, "check")
                 elif res.allin == 1:
+                    mesg = "all in#" + str(self.state.player[self.state.currpos].money) + "#" + str(self.state.moneypot)
                     self.state.moneypot += self.state.player[self.state.currpos].money
                     self.state.player[self.state.currpos].allinbet()
                     if self.state.player[self.state.currpos].bet > self.state.minbet:
@@ -213,7 +215,7 @@ class Client(object):
                         self.state.minbet = self.state.player[self.state.currpos].bet
 
                     self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
-                                                                     self.state.sharedcards, self.state.turnNum, "all in")
+                                                                     self.state.sharedcards, self.state.turnNum, mesg)
                 elif res.callbet == 1:
                     delta = self.state.minbet - self.state.player[self.state.currpos].bet
                     self.state.player[self.state.currpos].raisebet(delta)
@@ -402,11 +404,14 @@ if __name__ == '__main__':
     #username = sys.argv[1]
     username = "01Linus"
     logger = simple_logger()
+    f = open(username + ".txt", "w")
+    f.truncate()
+    f.close()
 # ****************************************************************************************************
 
 
 # ************************************ modify here to use your own AI! ********************************
-
+    print("now user is", username)
     c = Client(username, my_ai, logger)
     ClientJob(c).run()
 
