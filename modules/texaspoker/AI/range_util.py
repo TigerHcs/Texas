@@ -1,7 +1,8 @@
-import pickle
-from collections import defaultdict
 import os
+import pickle
+import random
 
+from lib.client_lib import judge_two
 def my_hash(cards):
     ret = 0
     for card in cards:
@@ -32,10 +33,24 @@ class RangeUtil():
             return sorted(cur_range, key = lambda x:-self.origin_range[my_hash(x)])
         elif len(com)==3: #flop
             return sorted(cur_range, key = lambda x:-self.flop_range[my_hash(com)][my_hash(x)])
-        elif len(com)==4: #turn
-            return cur_range
-        elif len(com)==5: #river
-            return cur_range
+        elif len(com)==4 or len(com)==5: #turn/river
+            total_t = 20000 // len(cur_range)
+            dic = {}
+            for pair in cur_range:
+                now_cards = [_ for _ in range(52) if _ not in (com+my_hand+pair)]
+                print(len(now_cards))
+                cnt_win = 0
+                need_com = 5 - len(com)
+                for _ in range(total_t):
+                    cards = random.sample(now_cards,2+need_com)
+                    com_ = com[:]
+                    if need_com == 1:
+                        com_.append(cards[-1])
+                    res = judge_two(com_+cards[:2], com_+pair)
+                    cnt_win += (res+1)/2.0
+
+                dic[my_hash(pair)] = cnt_win
+            return sorted(cur_range, key = lambda x:-dic[my_hash(x)])
         else:
             print("Invalid com cards!!!")
             return cur_range
@@ -47,5 +62,5 @@ if __name__ == "__main__":
     for i in range(52):
         for j in range(i+1,52):
             lst.append([i,j])
-    lst = range_util.update_range([],[8,9,10],lst)
+    lst = range_util.update_range([0,1],[8,9,10,35],lst)
     print(lst[:100])
