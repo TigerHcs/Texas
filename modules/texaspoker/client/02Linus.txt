@@ -1,1050 +1,514 @@
 turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is S6 ST my win rate is 0.3536 my odds is 0.16666666666666666
-turn num is 1 shared cards are : D2 H7 DT
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S6 ST my win rate is 0.5895 my odds is 0.0
-turn num is 2 shared cards are : D2 H7 DT HT
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S6 ST my win rate is 0.8983 my odds is 0.0
-turn num is 3 shared cards are : D2 H7 DT HT D6
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S6 ST my win rate is 0.9928 my odds is 0.0
-turn num is 3 shared cards are : D2 H7 DT HT D6
-player 0 range : 134 this turn bet : 120 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S6 ST my win rate is 0.9966 my odds is 0.3333333333333333
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is D4 D8 my win rate is 0.3069 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 171 this turn bet : 120 total bet : 0
-my bet : 40 my total bet : 0
-my card is D4 D8 my win rate is 0.2541 my odds is 0.2857142857142857
-turn num is 1 shared cards are : CQ S6 H3
-player 1 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is D4 D8 my win rate is 0.0967 my odds is 0.0
-turn num is 2 shared cards are : CQ S6 H3 ST
-player 1 range : 60 this turn bet : 360 total bet : 120
-my bet : 0 my total bet : 120
-my card is D4 D8 my win rate is 0.0302 my odds is 0.3333333333333333
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is HK C5 my win rate is 0.3843 my odds is 0.16666666666666666
-turn num is 1 shared cards are : DQ C7 S7
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is HK C5 my win rate is 0.3247 my odds is 0.0
-turn num is 1 shared cards are : DQ C7 S7
-player 0 range : 469 this turn bet : 240 total bet : 40
-player 2 range : 24 this turn bet : 240 total bet : 40
-my bet : 0 my total bet : 40
-my card is HK C5 my win rate is 0.0633 my odds is 0.2857142857142857
-turn num is 0 shared cards are : 
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is C7 CT my win rate is 0.5453 my odds is 0.25
-turn num is 1 shared cards are : DQ DK D6
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C7 CT my win rate is 0.36 my odds is 0.0
-turn num is 1 shared cards are : DQ DK D6
-player 2 range : 24 this turn bet : 160 total bet : 40
-my bet : 0 my total bet : 40
-my card is C7 CT my win rate is 0.0801 my odds is 0.4
-turn num is 0 shared cards are : 
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is C6 D5 my win rate is 0.4527 my odds is 0.25
-turn num is 1 shared cards are : DK HT D7
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C6 D5 my win rate is 0.2889 my odds is 0.0
-turn num is 2 shared cards are : DK HT D7 S8
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C6 D5 my win rate is 0.2868 my odds is 0.0
-turn num is 2 shared cards are : DK HT D7 S8
-player 2 range : 134 this turn bet : 80 total bet : 40
-my bet : 0 my total bet : 40
-my card is C6 D5 my win rate is 0.1828 my odds is 0.3333333333333333
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
 player 1 range : 1225 this turn bet : 40 total bet : 0
 my bet : 40 my total bet : 0
-my card is CK CT my win rate is 0.4778 my odds is 0.0
-turn num is 1 shared cards are : C9 CJ H8
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 1 range : 551 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is CK CT my win rate is 0.5783 my odds is 0.0
-turn num is 1 shared cards are : C9 CJ H8
-player 0 range : 42 this turn bet : 1440 total bet : 120
-my bet : 720 my total bet : 120
-my card is CK CT my win rate is 0.5268 my odds is 0.2222222222222222
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is S7 C5 my win rate is 0.2887 my odds is 0.0
-turn num is 1 shared cards are : DK CK S9
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 1 range : 551 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is S7 C5 my win rate is 0.0757 my odds is 0.0
-turn num is 2 shared cards are : DK CK S9 D5
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 1 range : 551 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is S7 C5 my win rate is 0.2243 my odds is 0.0
-turn num is 3 shared cards are : DK CK S9 D5 D7
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 1 range : 551 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is S7 C5 my win rate is 0.2582 my odds is 0.0
+my card is D4 HQ my win rate is 0.5408 my odds is 0.0
+my decision is raise bet 
+turn num is 1 shared cards are : CJ DQ C4
+player 1 range : 189 this turn bet : 80 total bet : 80
+my bet : 0 my total bet : 80
+my card is D4 HQ my win rate is 0.7542 my odds is 0.25
+my decision is raise bet 
 turn num is 0 shared cards are : 
 player 0 range : 1225 this turn bet : 40 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 20 my total bet : 0
-my card is H9 HJ my win rate is 0.4234 my odds is 0.16666666666666666
+my card is S6 D9 my win rate is 0.3232 my odds is 0.16666666666666666
+my decision is give up
 turn num is 0 shared cards are : 
-player 0 range : 478 this turn bet : 240 total bet : 0
-player 2 range : 61 this turn bet : 240 total bet : 0
+player 1 range : 1225 this turn bet : 20 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 0 my total bet : 0
+my card is D9 D3 my win rate is 0.3108 my odds is 0.4
+my decision is give up
+turn num is 0 shared cards are : 
+player 1 range : 1225 this turn bet : 20 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 0 my total bet : 0
+my card is CJ H6 my win rate is 0.3404 my odds is 0.4
+my decision is give up
+turn num is 0 shared cards are : 
+player 1 range : 134 this turn bet : 80 total bet : 0
 my bet : 40 my total bet : 0
-my card is H9 HJ my win rate is 0.2569 my odds is 0.2777777777777778
-turn num is 1 shared cards are : S6 C6 S3
-player 0 range : 478 this turn bet : 0 total bet : 240
-player 2 range : 61 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is H9 HJ my win rate is 0.1018 my odds is 0.0
-turn num is 1 shared cards are : S6 C6 S3
-player 2 range : 10 this turn bet : 720 total bet : 240
-my bet : 0 my total bet : 240
-my card is H9 HJ my win rate is 0.0063 my odds is 0.3333333333333333
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is S3 DQ my win rate is 0.3361 my odds is 0.4
-turn num is 1 shared cards are : H9 D9 S9
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S3 DQ my win rate is 0.3826 my odds is 0.0
-turn num is 2 shared cards are : H9 D9 S9 H2
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S3 DQ my win rate is 0.3164 my odds is 0.0
-turn num is 3 shared cards are : H9 D9 S9 H2 SQ
-player 1 range : 24 this turn bet : 240 total bet : 40
-my bet : 0 my total bet : 40
-my card is S3 DQ my win rate is 0.5791 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is C3 D2 my win rate is 0.2204 my odds is 0.4
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is DQ C8 my win rate is 0.3816 my odds is 0.0
-turn num is 1 shared cards are : D9 C3 H8
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 1 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is DQ C8 my win rate is 0.5411 my odds is 0.0
-turn num is 1 shared cards are : D9 C3 H8
-player 0 range : 24 this turn bet : 240 total bet : 40
-my bet : 0 my total bet : 40
-my card is DQ C8 my win rate is 0.1874 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is HK D4 my win rate is 0.372 my odds is 0.4
-turn num is 1 shared cards are : S8 D7 CA
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is HK D4 my win rate is 0.2436 my odds is 0.0
-turn num is 2 shared cards are : S8 D7 CA H4
-player 1 range : 24 this turn bet : 240 total bet : 40
-my bet : 0 my total bet : 40
-my card is HK D4 my win rate is 0.1033 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is D6 H5 my win rate is 0.296 my odds is 0.4
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is DK C9 my win rate is 0.4384 my odds is 0.0
-turn num is 1 shared cards are : S8 H3 C5
-player 1 range : 478 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is DK C9 my win rate is 0.4289 my odds is 0.0
-turn num is 2 shared cards are : S8 H3 C5 HJ
-player 1 range : 478 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is DK C9 my win rate is 0.2979 my odds is 0.0
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is S5 S6 my win rate is 0.3411 my odds is 0.4
-turn num is 1 shared cards are : H8 CT SQ
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S5 S6 my win rate is 0.1552 my odds is 0.0
-turn num is 2 shared cards are : H8 CT SQ H6
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S5 S6 my win rate is 0.2728 my odds is 0.0
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is DJ CK my win rate is 0.4692 my odds is 0.16666666666666666
-turn num is 1 shared cards are : SK SQ D5
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is DJ CK my win rate is 0.7239 my odds is 0.0
-turn num is 2 shared cards are : SK SQ D5 H4
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is DJ CK my win rate is 0.7537 my odds is 0.0
-turn num is 3 shared cards are : SK SQ D5 H4 H8
-player 0 range : 505 this turn bet : 0 total bet : 160
+my card is C7 DA my win rate is 0.4078 my odds is 0.25
+my decision is callbet
+turn num is 1 shared cards are : D6 D7 H7
+player 1 range : 134 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is C7 DA my win rate is 0.9283 my odds is 0.0
+my decision is raise bet 
+turn num is 2 shared cards are : D6 D7 H7 S7
+player 1 range : 59 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is DJ CK my win rate is 0.8395 my odds is 0.0
-turn num is 3 shared cards are : SK SQ D5 H4 H8
-player 0 range : 55 this turn bet : 360 total bet : 160
+my card is C7 DA my win rate is 1.0 my odds is 0.0
+my decision is raise bet 
+turn num is 0 shared cards are : 
+player 1 range : 1225 this turn bet : 20 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 0 my total bet : 0
+my card is C4 SA my win rate is 0.4195 my odds is 0.4
+my decision is raise bet 
+turn num is 1 shared cards are : H6 HA DA
+player 2 range : 196 this turn bet : 80 total bet : 80
+my bet : 0 my total bet : 80
+my card is C4 SA my win rate is 0.918 my odds is 0.23529411764705882
+my decision is callbet
+turn num is 2 shared cards are : H6 HA DA HJ
+player 2 range : 196 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is DJ CK my win rate is 0.6829 my odds is 0.3333333333333333
+my card is C4 SA my win rate is 0.8184 my odds is 0.0
+my decision is raise bet 
 turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
 player 1 range : 1225 this turn bet : 40 total bet : 0
 my bet : 40 my total bet : 0
-my card is SA S3 my win rate is 0.4286 my odds is 0.0
-turn num is 1 shared cards are : HK H6 C5
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 1 range : 1225 this turn bet : 0 total bet : 40
+my card is DK H2 my win rate is 0.547 my odds is 0.0
+my decision is check
+turn num is 1 shared cards are : HA SJ SQ
+player 1 range : 189 this turn bet : 40 total bet : 40
 my bet : 0 my total bet : 40
-my card is SA S3 my win rate is 0.2465 my odds is 0.0
-turn num is 1 shared cards are : HK H6 C5
-player 0 range : 24 this turn bet : 240 total bet : 40
-my bet : 0 my total bet : 40
-my card is SA S3 my win rate is 0.135 my odds is 0.4
+my card is DK H2 my win rate is 0.2076 my odds is 0.25
+my decision is give up
 turn num is 0 shared cards are : 
 player 1 range : 1225 this turn bet : 20 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 0 my total bet : 0
-my card is CJ D2 my win rate is 0.2934 my odds is 0.4
+my card is C6 SK my win rate is 0.3918 my odds is 0.4
+my decision is give up
 turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
+player 0 range : 98 this turn bet : 80 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 20 my total bet : 0
-my card is HK CT my win rate is 0.4551 my odds is 0.16666666666666666
-turn num is 1 shared cards are : HA SQ DA
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is HK CT my win rate is 0.5396 my odds is 0.0
-turn num is 1 shared cards are : HA SQ DA
-player 2 range : 24 this turn bet : 240 total bet : 40
-my bet : 0 my total bet : 40
-my card is HK CT my win rate is 0.1995 my odds is 0.4
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is H9 H5 my win rate is 0.3404 my odds is 0.0
-turn num is 1 shared cards are : S6 CQ D5
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 1 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is H9 H5 my win rate is 0.3957 my odds is 0.0
-turn num is 1 shared cards are : S6 CQ D5
-player 0 range : 24 this turn bet : 240 total bet : 40
-my bet : 0 my total bet : 40
-my card is H9 H5 my win rate is 0.1737 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is HQ C8 my win rate is 0.5706 my odds is 0.0
-turn num is 1 shared cards are : CA S7 CJ
-player 1 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is HQ C8 my win rate is 0.4746 my odds is 0.0
-turn num is 2 shared cards are : CA S7 CJ S3
-player 1 range : 24 this turn bet : 160 total bet : 40
-my bet : 0 my total bet : 40
-my card is HQ C8 my win rate is 0.017 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is CK S3 my win rate is 0.3543 my odds is 0.4
-turn num is 1 shared cards are : D3 SJ H2
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is CK S3 my win rate is 0.4342 my odds is 0.0
-turn num is 2 shared cards are : D3 SJ H2 D7
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is CK S3 my win rate is 0.3873 my odds is 0.0
-turn num is 3 shared cards are : D3 SJ H2 D7 C9
-player 1 range : 134 this turn bet : 120 total bet : 40
-player 2 range : 505 this turn bet : 120 total bet : 40
-my bet : 0 my total bet : 40
-my card is CK S3 my win rate is 0.1934 my odds is 0.25
-turn num is 0 shared cards are : 
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is S2 S9 my win rate is 0.4581 my odds is 0.25
-turn num is 0 shared cards are : 
-player 2 range : 1225 this turn bet : 80 total bet : 0
-my bet : 40 my total bet : 0
-my card is S2 S9 my win rate is 0.4554 my odds is 0.25
-turn num is 1 shared cards are : H6 C9 S6
+my card is HQ H6 my win rate is 0.4224 my odds is 0.3
+my decision is callbet
+turn num is 1 shared cards are : S2 C9 H4
+player 0 range : 98 this turn bet : 0 total bet : 80
 player 2 range : 1225 this turn bet : 0 total bet : 80
 my bet : 0 my total bet : 80
-my card is S2 S9 my win rate is 0.7626 my odds is 0.0
-turn num is 1 shared cards are : H6 C9 S6
-player 2 range : 134 this turn bet : 160 total bet : 80
+my card is H6 HQ my win rate is 0.1728 my odds is 0.0
+my decision is check
+turn num is 1 shared cards are : S2 C9 H4
+player 0 range : 16 this turn bet : 80 total bet : 80
 my bet : 0 my total bet : 80
-my card is S2 S9 my win rate is 0.6146 my odds is 0.3333333333333333
-turn num is 2 shared cards are : H6 C9 S6 H2
-player 2 range : 134 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is S2 S9 my win rate is 0.6841 my odds is 0.0
-turn num is 2 shared cards are : H6 C9 S6 H2
-player 2 range : 10 this turn bet : 720 total bet : 240
-my bet : 0 my total bet : 240
-my card is S2 S9 my win rate is 0.0733 my odds is 0.375
+my card is H6 HQ my win rate is 0.2098 my odds is 0.2
+my decision is callbet
+turn num is 2 shared cards are : S2 C9 H4 DQ
+player 0 range : 16 this turn bet : 0 total bet : 160
+my bet : 0 my total bet : 160
+my card is H6 HQ my win rate is 0.6729 my odds is 0.0
+my decision is check
+turn num is 3 shared cards are : S2 C9 H4 DQ D8
+player 0 range : 16 this turn bet : 0 total bet : 160
+my bet : 0 my total bet : 160
+my card is H6 HQ my win rate is 0.7581 my odds is 0.0
+my decision is check
+turn num is 0 shared cards are : 
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 20 my total bet : 0
+my card is H5 SK my win rate is 0.5695 my odds is 0.25
+my decision is give up
 turn num is 0 shared cards are : 
 player 1 range : 1225 this turn bet : 20 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 0 my total bet : 0
-my card is HJ CT my win rate is 0.4119 my odds is 0.4
+my card is H2 D5 my win rate is 0.2426 my odds is 0.4
+my decision is give up
+turn num is 0 shared cards are : 
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 20 my total bet : 0
+my card is CT C8 my win rate is 0.5567 my odds is 0.25
+my decision is raise bet 
+turn num is 1 shared cards are : D5 H8 D3
+player 2 range : 1225 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is C8 CT my win rate is 0.721 my odds is 0.0
+my decision is raise bet 
+turn num is 0 shared cards are : 
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 20 my total bet : 0
+my card is D2 SA my win rate is 0.5771 my odds is 0.25
+my decision is raise bet 
+turn num is 1 shared cards are : D7 SJ ST
+player 2 range : 1225 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is D2 SA my win rate is 0.4677 my odds is 0.0
+my decision is check
 turn num is 0 shared cards are : 
 player 1 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 171 this turn bet : 120 total bet : 0
 my bet : 40 my total bet : 0
-my card is HJ CT my win rate is 0.2995 my odds is 0.2857142857142857
-turn num is 1 shared cards are : H5 D3 H3
-player 1 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is HJ CT my win rate is 0.1585 my odds is 0.0
-turn num is 2 shared cards are : H5 D3 H3 H9
-player 1 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is HJ CT my win rate is 0.1623 my odds is 0.0
-turn num is 3 shared cards are : H5 D3 H3 H9 DK
-player 2 range : 10 this turn bet : 2160 total bet : 480
-my bet : 0 my total bet : 480
-my card is HJ CT my win rate is 0.0 my odds is 0.4
+my card is H9 S7 my win rate is 0.4996 my odds is 0.0
+my decision is check
+turn num is 1 shared cards are : DA S8 S3
+player 1 range : 189 this turn bet : 40 total bet : 40
+my bet : 0 my total bet : 40
+my card is H9 S7 my win rate is 0.1774 my odds is 0.25
+my decision is give up
 turn num is 0 shared cards are : 
 player 0 range : 1225 this turn bet : 40 total bet : 0
 player 1 range : 1225 this turn bet : 40 total bet : 0
 my bet : 40 my total bet : 0
-my card is C2 D5 my win rate is 0.2483 my odds is 0.0
-turn num is 1 shared cards are : C9 DA DJ
+my card is SQ H4 my win rate is 0.3545 my odds is 0.0
+my decision is check
+turn num is 1 shared cards are : SK C3 D3
 player 0 range : 1225 this turn bet : 0 total bet : 40
 player 1 range : 1225 this turn bet : 0 total bet : 40
 my bet : 0 my total bet : 40
-my card is C2 D5 my win rate is 0.1428 my odds is 0.0
-turn num is 2 shared cards are : C9 DA DJ S7
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 1 range : 1225 this turn bet : 0 total bet : 40
+my card is SQ H4 my win rate is 0.2972 my odds is 0.0
+my decision is check
+turn num is 1 shared cards are : SK C3 D3
+player 0 range : 208 this turn bet : 40 total bet : 40
+player 1 range : 558 this turn bet : 40 total bet : 40
 my bet : 0 my total bet : 40
-my card is C2 D5 my win rate is 0.0452 my odds is 0.0
-turn num is 3 shared cards are : C9 DA DJ S7 D9
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 1 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C2 D5 my win rate is 0.0381 my odds is 0.0
+my card is SQ H4 my win rate is 0.095 my odds is 0.16666666666666666
+my decision is give up
+turn num is 0 shared cards are : 
+player 1 range : 134 this turn bet : 80 total bet : 0
+my bet : 40 my total bet : 0
+my card is CQ CJ my win rate is 0.4093 my odds is 0.25
+my decision is callbet
+turn num is 1 shared cards are : DT H3 S3
+player 1 range : 134 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is CQ CJ my win rate is 0.2235 my odds is 0.0
+my decision is check
+turn num is 2 shared cards are : DT H3 S3 HT
+player 1 range : 134 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is CQ CJ my win rate is 0.1641 my odds is 0.0
+my decision is check
+turn num is 3 shared cards are : DT H3 S3 HT S7
+player 1 range : 20 this turn bet : 80 total bet : 80
+my bet : 0 my total bet : 80
+my card is CQ CJ my win rate is 0.0 my odds is 0.25
+my decision is give up
+turn num is 0 shared cards are : 
+player 0 range : 98 this turn bet : 80 total bet : 0
+player 1 range : 520 this turn bet : 80 total bet : 0
+my bet : 40 my total bet : 0
+my card is S7 HJ my win rate is 0.3198 my odds is 0.16666666666666666
+my decision is callbet
+turn num is 1 shared cards are : C2 H3 D2
+player 0 range : 98 this turn bet : 0 total bet : 80
+player 1 range : 520 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is S7 HJ my win rate is 0.0082 my odds is 0.0
+my decision is check
+turn num is 2 shared cards are : C2 H3 D2 DJ
+player 0 range : 98 this turn bet : 0 total bet : 80
+player 1 range : 520 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is S7 HJ my win rate is 0.0439 my odds is 0.0
+my decision is give up
+turn num is 0 shared cards are : 
+player 1 range : 1225 this turn bet : 20 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 0 my total bet : 0
+my card is HA HK my win rate is 0.5142 my odds is 0.4
+my decision is callbet
+turn num is 0 shared cards are : 
+player 1 range : 178 this turn bet : 80 total bet : 0
+player 2 range : 1225 this turn bet : 80 total bet : 0
+my bet : 40 my total bet : 0
+my card is HK HA my win rate is 0.4769 my odds is 0.16666666666666666
+my decision is raise bet 
+turn num is 1 shared cards are : D9 H4 S8
+player 1 range : 81 this turn bet : 0 total bet : 160
+my bet : 0 my total bet : 160
+my card is HK HA my win rate is 0.4725 my odds is 0.0
+my decision is check
+turn num is 2 shared cards are : D9 H4 S8 CT
+player 1 range : 81 this turn bet : 0 total bet : 160
+my bet : 0 my total bet : 160
+my card is HK HA my win rate is 0.3457 my odds is 0.0
+my decision is check
+turn num is 0 shared cards are : 
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 20 my total bet : 0
+my card is HJ SQ my win rate is 0.6111 my odds is 0.25
+my decision is raise bet 
+turn num is 1 shared cards are : C7 D5 SA
+player 2 range : 1225 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is HJ SQ my win rate is 0.4766 my odds is 0.0
+my decision is raise bet 
+turn num is 0 shared cards are : 
+player 1 range : 1225 this turn bet : 20 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 0 my total bet : 0
+my card is H8 D7 my win rate is 0.3418 my odds is 0.4
+my decision is give up
 turn num is 0 shared cards are : 
 player 0 range : 1225 this turn bet : 40 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 20 my total bet : 0
-my card is H7 D7 my win rate is 0.4823 my odds is 0.16666666666666666
+my card is H2 C5 my win rate is 0.2434 my odds is 0.16666666666666666
+my decision is give up
 turn num is 0 shared cards are : 
-player 2 range : 61 this turn bet : 240 total bet : 0
-my bet : 40 my total bet : 0
-my card is H7 D7 my win rate is 0.3221 my odds is 0.38461538461538464
-turn num is 1 shared cards are : CJ C9 CQ
-player 2 range : 61 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is H7 D7 my win rate is 0.1952 my odds is 0.0
-turn num is 2 shared cards are : CJ C9 CQ C7
-player 2 range : 25 this turn bet : 0 total bet : 760
-my bet : 0 my total bet : 760
-my card is H7 D7 my win rate is 0.4883 my odds is 0.0
-turn num is 3 shared cards are : CJ C9 CQ C7 C6
-player 2 range : 25 this turn bet : 0 total bet : 760
-my bet : 0 my total bet : 760
-my card is H7 D7 my win rate is 0.8464 my odds is 0.0
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 20 my total bet : 0
-my card is DJ H3 my win rate is 0.3171 my odds is 0.16666666666666666
-turn num is 1 shared cards are : SA C8 SQ
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
+my card is D3 HJ my win rate is 0.4961 my odds is 0.25
+my decision is give up
+turn num is 0 shared cards are : 
+player 0 range : 98 this turn bet : 80 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 20 my total bet : 0
+my card is S6 H4 my win rate is 0.3247 my odds is 0.3
+my decision is give up
+turn num is 0 shared cards are : 
+player 1 range : 1225 this turn bet : 40 total bet : 0
+my bet : 40 my total bet : 0
+my card is C4 DJ my win rate is 0.5001 my odds is 0.0
+my decision is check
+turn num is 1 shared cards are : DK H7 DT
+player 1 range : 1225 this turn bet : 0 total bet : 40
 my bet : 0 my total bet : 40
-my card is DJ H3 my win rate is 0.2196 my odds is 0.0
-turn num is 2 shared cards are : SA C8 SQ CQ
-player 2 range : 469 this turn bet : 0 total bet : 280
+my card is C4 DJ my win rate is 0.4124 my odds is 0.0
+my decision is check
+turn num is 2 shared cards are : DK H7 DT CJ
+player 1 range : 1225 this turn bet : 0 total bet : 40
+my bet : 0 my total bet : 40
+my card is C4 DJ my win rate is 0.6828 my odds is 0.0
+my decision is raise bet 
+turn num is 0 shared cards are : 
+player 0 range : 98 this turn bet : 80 total bet : 0
+my bet : 40 my total bet : 0
+my card is HK C7 my win rate is 0.6432 my odds is 0.2222222222222222
+my decision is raise bet 
+turn num is 0 shared cards are : 
+player 0 range : 14 this turn bet : 240 total bet : 0
+my bet : 160 my total bet : 0
+my card is HK C7 my win rate is 0.6 my odds is 0.16
+my decision is raise bet 
+turn num is 1 shared cards are : C8 C3 ST
+player 0 range : 14 this turn bet : 0 total bet : 400
+my bet : 0 my total bet : 400
+my card is HK C7 my win rate is 0.6019 my odds is 0.0
+my decision is check
+turn num is 2 shared cards are : C8 C3 ST C2
+player 0 range : 14 this turn bet : 0 total bet : 400
+my bet : 0 my total bet : 400
+my card is HK C7 my win rate is 0.2537 my odds is 0.0
+my decision is check
+turn num is 3 shared cards are : C8 C3 ST C2 D7
+player 0 range : 14 this turn bet : 0 total bet : 400
+my bet : 0 my total bet : 400
+my card is HK C7 my win rate is 1.0 my odds is 0.0
+my decision is raise bet 
+turn num is 0 shared cards are : 
+player 0 range : 98 this turn bet : 80 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 20 my total bet : 0
+my card is D2 S2 my win rate is 0.3345 my odds is 0.3
+my decision is callbet
+turn num is 1 shared cards are : S8 D8 H5
+player 0 range : 98 this turn bet : 0 total bet : 80
+player 2 range : 1225 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is S2 D2 my win rate is 0.3319 my odds is 0.0
+my decision is check
+turn num is 1 shared cards are : S8 D8 H5
+player 0 range : 16 this turn bet : 80 total bet : 80
+my bet : 0 my total bet : 80
+my card is S2 D2 my win rate is 0.7303 my odds is 0.2
+my decision is raise bet 
+turn num is 2 shared cards are : S8 D8 H5 D5
+player 0 range : 16 this turn bet : 0 total bet : 280
 my bet : 0 my total bet : 280
-my card is DJ H3 my win rate is 0.2082 my odds is 0.0
-turn num is 2 shared cards are : SA C8 SQ CQ
-player 2 range : 68 this turn bet : 720 total bet : 280
-my bet : 600 my total bet : 280
-my card is DJ H3 my win rate is 0.0044 my odds is 0.058823529411764705
+my card is S2 D2 my win rate is 0.2863 my odds is 0.0
+my decision is check
+turn num is 3 shared cards are : S8 D8 H5 D5 HJ
+player 0 range : 16 this turn bet : 0 total bet : 280
+my bet : 0 my total bet : 280
+my card is S2 D2 my win rate is 0.1243 my odds is 0.0
+my decision is raise bet 
 turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is S6 H8 my win rate is 0.3167 my odds is 0.4
-turn num is 1 shared cards are : D9 CQ H2
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S6 H8 my win rate is 0.1433 my odds is 0.0
-turn num is 2 shared cards are : D9 CQ H2 H4
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S6 H8 my win rate is 0.0607 my odds is 0.0
-turn num is 3 shared cards are : D9 CQ H2 H4 SQ
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is S6 H8 my win rate is 0.0191 my odds is 0.0
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 1 range : 1225 this turn bet : 40 total bet : 0
+player 0 range : 98 this turn bet : 80 total bet : 0
 my bet : 40 my total bet : 0
-my card is D7 SA my win rate is 0.4224 my odds is 0.0
-turn num is 1 shared cards are : CQ C8 H5
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 1 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is D7 SA my win rate is 0.2681 my odds is 0.0
-turn num is 1 shared cards are : CQ C8 H5
-player 0 range : 134 this turn bet : 120 total bet : 40
-player 1 range : 505 this turn bet : 120 total bet : 40
-my bet : 0 my total bet : 40
-my card is D7 SA my win rate is 0.1662 my odds is 0.25
-turn num is 2 shared cards are : CQ C8 H5 C9
-player 0 range : 134 this turn bet : 0 total bet : 160
-player 1 range : 505 this turn bet : 0 total bet : 160
+my card is CQ CT my win rate is 0.6567 my odds is 0.2222222222222222
+my decision is raise bet 
+turn num is 1 shared cards are : DJ H3 SA
+player 0 range : 43 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is D7 SA my win rate is 0.129 my odds is 0.0
-turn num is 2 shared cards are : CQ C8 H5 C9
-player 0 range : 14 this turn bet : 480 total bet : 160
-player 1 range : 208 this turn bet : 480 total bet : 160
+my card is CQ CT my win rate is 0.5393 my odds is 0.0
+my decision is check
+turn num is 2 shared cards are : DJ H3 SA DK
+player 0 range : 43 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is D7 SA my win rate is 0.0921 my odds is 0.25
+my card is CQ CT my win rate is 1.0 my odds is 0.0
+my decision is raise bet 
 turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
+player 0 range : 98 this turn bet : 80 total bet : 0
 my bet : 40 my total bet : 0
-my card is C8 CT my win rate is 0.5523 my odds is 0.0
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is H7 H4 my win rate is 0.3018 my odds is 0.0
-turn num is 1 shared cards are : HA C9 C3
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 1 range : 551 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is H7 H4 my win rate is 0.1376 my odds is 0.0
-turn num is 1 shared cards are : HA C9 C3
-player 0 range : 57 this turn bet : 720 total bet : 120
-my bet : 360 my total bet : 120
-my card is H7 H4 my win rate is 0.0916 my odds is 0.2
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is S9 H4 my win rate is 0.2776 my odds is 0.16666666666666666
-turn num is 0 shared cards are : 
-player 0 range : 526 this turn bet : 120 total bet : 0
-player 2 range : 171 this turn bet : 120 total bet : 0
-my bet : 40 my total bet : 0
-my card is S9 H4 my win rate is 0.1953 my odds is 0.2222222222222222
-turn num is 1 shared cards are : C4 SJ CT
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is S9 H4 my win rate is 0.2187 my odds is 0.0
-turn num is 2 shared cards are : C4 SJ CT H9
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is S9 H4 my win rate is 0.4888 my odds is 0.0
-turn num is 3 shared cards are : C4 SJ CT H9 CQ
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is S9 H4 my win rate is 0.0909 my odds is 0.0
+my card is H3 H9 my win rate is 0.573 my odds is 0.2222222222222222
+my decision is callbet
+turn num is 1 shared cards are : HJ C8 D6
+player 0 range : 98 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is H3 H9 my win rate is 0.4907 my odds is 0.0
+my decision is check
+turn num is 2 shared cards are : HJ C8 D6 CK
+player 0 range : 98 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is H3 H9 my win rate is 0.4248 my odds is 0.0
+my decision is check
+turn num is 3 shared cards are : HJ C8 D6 CK C7
+player 0 range : 98 this turn bet : 0 total bet : 80
+my bet : 0 my total bet : 80
+my card is H3 H9 my win rate is 0.3345 my odds is 0.0
+my decision is check
 turn num is 0 shared cards are : 
 player 1 range : 1225 this turn bet : 20 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 0 my total bet : 0
-my card is C3 CQ my win rate is 0.364 my odds is 0.4
+my card is CQ H8 my win rate is 0.3971 my odds is 0.4
+my decision is give up
 turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 61 this turn bet : 240 total bet : 0
+player 0 range : 98 this turn bet : 80 total bet : 0
 my bet : 40 my total bet : 0
-my card is C3 CQ my win rate is 0.2365 my odds is 0.38461538461538464
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is C9 HQ my win rate is 0.5928 my odds is 0.0
-turn num is 1 shared cards are : H9 D2 C7
-player 1 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C9 HQ my win rate is 0.7877 my odds is 0.0
-turn num is 2 shared cards are : H9 D2 C7 SK
-player 1 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C9 HQ my win rate is 0.7652 my odds is 0.0
-turn num is 3 shared cards are : H9 D2 C7 SK CQ
-player 1 range : 505 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is C9 HQ my win rate is 0.8619 my odds is 0.0
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is CA C3 my win rate is 0.4354 my odds is 0.4
-turn num is 1 shared cards are : SA SK S9
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is CA C3 my win rate is 0.5946 my odds is 0.0
-turn num is 2 shared cards are : SA SK S9 ST
-player 2 range : 505 this turn bet : 0 total bet : 160
+my card is H7 C2 my win rate is 0.5051 my odds is 0.2222222222222222
+my decision is raise bet 
+turn num is 1 shared cards are : S3 S8 H8
+player 0 range : 43 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is CA C3 my win rate is 0.6065 my odds is 0.0
-turn num is 3 shared cards are : SA SK S9 ST S8
-player 2 range : 10 this turn bet : 720 total bet : 160
+my card is H7 C2 my win rate is 0.1924 my odds is 0.0
+my decision is check
+turn num is 2 shared cards are : S3 S8 H8 S5
+player 0 range : 43 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is CA C3 my win rate is 0.4962 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is C3 DQ my win rate is 0.3326 my odds is 0.4
-turn num is 1 shared cards are : S7 CA D2
-player 1 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C3 DQ my win rate is 0.2252 my odds is 0.0
-turn num is 2 shared cards are : S7 CA D2 SJ
-player 2 range : 505 this turn bet : 0 total bet : 160
+my card is H7 C2 my win rate is 0.055 my odds is 0.0
+my decision is check
+turn num is 3 shared cards are : S3 S8 H8 S5 CQ
+player 0 range : 43 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is C3 DQ my win rate is 0.1684 my odds is 0.0
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is D2 H4 my win rate is 0.2325 my odds is 0.16666666666666666
-turn num is 1 shared cards are : C7 DQ SQ
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is D2 H4 my win rate is 0.1325 my odds is 0.0
+my card is H7 C2 my win rate is 0.0 my odds is 0.0
+my decision is raise bet 
 turn num is 0 shared cards are : 
 player 1 range : 1225 this turn bet : 20 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 0 my total bet : 0
-my card is H9 CA my win rate is 0.4431 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 61 this turn bet : 240 total bet : 0
-my bet : 40 my total bet : 0
-my card is H9 CA my win rate is 0.2599 my odds is 0.38461538461538464
+my card is SJ C7 my win rate is 0.3561 my odds is 0.4
+my decision is give up
 turn num is 0 shared cards are : 
 player 0 range : 1225 this turn bet : 40 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 20 my total bet : 0
-my card is DT S2 my win rate is 0.2743 my odds is 0.16666666666666666
-turn num is 0 shared cards are : 
-player 2 range : 61 this turn bet : 240 total bet : 0
-my bet : 40 my total bet : 0
-my card is DT S2 my win rate is 0.2202 my odds is 0.38461538461538464
+my card is CJ S5 my win rate is 0.3266 my odds is 0.16666666666666666
+my decision is give up
 turn num is 0 shared cards are : 
 player 1 range : 1225 this turn bet : 20 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 0 my total bet : 0
-my card is H2 DT my win rate is 0.2816 my odds is 0.4
+my card is H4 S5 my win rate is 0.2756 my odds is 0.4
+my decision is give up
 turn num is 0 shared cards are : 
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 20 my total bet : 0
-my card is C6 S5 my win rate is 0.4396 my odds is 0.25
-turn num is 0 shared cards are : 
-player 2 range : 79 this turn bet : 160 total bet : 0
-my bet : 40 my total bet : 0
-my card is C6 S5 my win rate is 0.2603 my odds is 0.375
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is CQ H7 my win rate is 0.363 my odds is 0.4
-turn num is 1 shared cards are : CK D5 DT
-player 1 range : 134 this turn bet : 120 total bet : 40
-player 2 range : 505 this turn bet : 120 total bet : 40
-my bet : 0 my total bet : 40
-my card is CQ H7 my win rate is 0.0644 my odds is 0.25
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is CT H3 my win rate is 0.2897 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is H2 S5 my win rate is 0.3946 my odds is 0.0
-turn num is 1 shared cards are : C8 SA ST
-player 1 range : 53 this turn bet : 320 total bet : 160
-my bet : 0 my total bet : 160
-my card is H2 S5 my win rate is 0.0567 my odds is 0.3333333333333333
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is C6 D5 my win rate is 0.4418 my odds is 0.0
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is H5 H9 my win rate is 0.3243 my odds is 0.16666666666666666
-turn num is 1 shared cards are : HK C7 H3
-player 0 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 526 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is H5 H9 my win rate is 0.3631 my odds is 0.0
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is H6 CQ my win rate is 0.3583 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 134 this turn bet : 120 total bet : 0
-player 2 range : 526 this turn bet : 120 total bet : 0
-my bet : 40 my total bet : 0
-my card is H6 CQ my win rate is 0.2161 my odds is 0.2222222222222222
-turn num is 1 shared cards are : C8 CK CJ
-player 1 range : 134 this turn bet : 0 total bet : 120
-player 2 range : 526 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is H6 CQ my win rate is 0.3766 my odds is 0.0
-turn num is 2 shared cards are : C8 CK CJ H2
-player 1 range : 134 this turn bet : 0 total bet : 120
-player 2 range : 526 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is H6 CQ my win rate is 0.2255 my odds is 0.0
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is ST C7 my win rate is 0.3406 my odds is 0.16666666666666666
-turn num is 1 shared cards are : DT D5 H9
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is ST C7 my win rate is 0.5878 my odds is 0.0
-turn num is 2 shared cards are : DT D5 H9 CJ
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is ST C7 my win rate is 0.4861 my odds is 0.0
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is S6 D4 my win rate is 0.2811 my odds is 0.16666666666666666
-turn num is 0 shared cards are : 
-player 0 range : 478 this turn bet : 240 total bet : 0
-player 2 range : 61 this turn bet : 240 total bet : 0
-my bet : 40 my total bet : 0
-my card is S6 D4 my win rate is 0.1855 my odds is 0.2777777777777778
-turn num is 1 shared cards are : DQ H4 SJ
-player 0 range : 478 this turn bet : 0 total bet : 240
-player 2 range : 61 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is S6 D4 my win rate is 0.1759 my odds is 0.0
-turn num is 2 shared cards are : DQ H4 SJ C2
-player 0 range : 478 this turn bet : 0 total bet : 240
-player 2 range : 61 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is S6 D4 my win rate is 0.1377 my odds is 0.0
-turn num is 2 shared cards are : DQ H4 SJ C2
-player 0 range : 52 this turn bet : 720 total bet : 240
-player 2 range : 61 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is S6 D4 my win rate is 0.0972 my odds is 0.3333333333333333
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 1 range : 134 this turn bet : 120 total bet : 0
-my bet : 40 my total bet : 0
-my card is HA ST my win rate is 0.3633 my odds is 0.2857142857142857
-turn num is 1 shared cards are : D5 S5 S7
-player 0 range : 551 this turn bet : 0 total bet : 120
-player 1 range : 134 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is HA ST my win rate is 0.3189 my odds is 0.0
-turn num is 1 shared cards are : D5 S5 S7
-player 0 range : 60 this turn bet : 720 total bet : 120
-my bet : 360 my total bet : 120
-my card is HA ST my win rate is 0.2183 my odds is 0.2
-turn num is 2 shared cards are : D5 S5 S7 H9
-player 0 range : 60 this turn bet : 0 total bet : 840
-my bet : 0 my total bet : 840
-my card is HA ST my win rate is 0.1364 my odds is 0.0
-turn num is 2 shared cards are : D5 S5 S7 H9
-player 0 range : 10 this turn bet : 3600 total bet : 840
-my bet : 0 my total bet : 840
-my card is HA ST my win rate is 0.0766 my odds is 0.4
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is SK HJ my win rate is 0.4666 my odds is 0.16666666666666666
-turn num is 1 shared cards are : HT DT D6
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is SK HJ my win rate is 0.3527 my odds is 0.0
-turn num is 2 shared cards are : HT DT D6 C2
-player 2 range : 505 this turn bet : 0 total bet : 160
-my bet : 0 my total bet : 160
-my card is SK HJ my win rate is 0.4669 my odds is 0.0
-turn num is 2 shared cards are : HT DT D6 C2
-player 2 range : 55 this turn bet : 360 total bet : 160
-my bet : 0 my total bet : 160
-my card is SK HJ my win rate is 0.0027 my odds is 0.3333333333333333
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is SQ S5 my win rate is 0.3883 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 171 this turn bet : 120 total bet : 0
-my bet : 40 my total bet : 0
-my card is SQ S5 my win rate is 0.2673 my odds is 0.2857142857142857
-turn num is 1 shared cards are : DT S4 SJ
-player 1 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is SQ S5 my win rate is 0.3909 my odds is 0.0
-turn num is 2 shared cards are : DT S4 SJ C3
-player 1 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is SQ S5 my win rate is 0.2319 my odds is 0.0
-turn num is 3 shared cards are : DT S4 SJ C3 S3
-player 1 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is SQ S5 my win rate is 0.9216 my odds is 0.0
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 1 range : 134 this turn bet : 120 total bet : 0
-my bet : 40 my total bet : 0
-my card is CK C6 my win rate is 0.2979 my odds is 0.2857142857142857
-turn num is 1 shared cards are : H6 HA S7
-player 0 range : 551 this turn bet : 0 total bet : 120
-player 1 range : 134 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is CK C6 my win rate is 0.2738 my odds is 0.0
-turn num is 1 shared cards are : H6 HA S7
-player 0 range : 11 this turn bet : 720 total bet : 120
-my bet : 0 my total bet : 120
-my card is CK C6 my win rate is 0.1493 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is HK C4 my win rate is 0.3753 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 171 this turn bet : 120 total bet : 0
-my bet : 40 my total bet : 0
-my card is HK C4 my win rate is 0.2534 my odds is 0.2857142857142857
-turn num is 1 shared cards are : HA D3 C9
-player 1 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is HK C4 my win rate is 0.1389 my odds is 0.0
-turn num is 2 shared cards are : HA D3 C9 D5
-player 1 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is HK C4 my win rate is 0.1629 my odds is 0.0
-turn num is 3 shared cards are : HA D3 C9 D5 S4
-player 1 range : 551 this turn bet : 0 total bet : 120
-player 2 range : 171 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is HK C4 my win rate is 0.2459 my odds is 0.0
+my card is D8 H3 my win rate is 0.4164 my odds is 0.25
+my decision is give up
 turn num is 0 shared cards are : 
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 20 my total bet : 0
-my card is D2 C4 my win rate is 0.3753 my odds is 0.25
-turn num is 1 shared cards are : H4 C7 S4
+my card is S2 S4 my win rate is 0.4152 my odds is 0.25
+my decision is give up
+turn num is 0 shared cards are : 
+player 0 range : 98 this turn bet : 80 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 20 my total bet : 0
+my card is D4 ST my win rate is 0.3381 my odds is 0.3
+my decision is give up
+turn num is 0 shared cards are : 
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 20 my total bet : 0
+my card is C4 H4 my win rate is 0.5803 my odds is 0.25
+my decision is raise bet 
+turn num is 1 shared cards are : S9 H6 D2
 player 2 range : 1225 this turn bet : 0 total bet : 80
 my bet : 0 my total bet : 80
-my card is D2 C4 my win rate is 0.925 my odds is 0.0
-turn num is 1 shared cards are : H4 C7 S4
-player 2 range : 24 this turn bet : 320 total bet : 80
-my bet : 0 my total bet : 80
-my card is D2 C4 my win rate is 0.9101 my odds is 0.4
-turn num is 2 shared cards are : H4 C7 S4 HT
-player 2 range : 24 this turn bet : 0 total bet : 400
-my bet : 0 my total bet : 400
-my card is D2 C4 my win rate is 0.8629 my odds is 0.0
-turn num is 3 shared cards are : H4 C7 S4 HT C8
-player 2 range : 24 this turn bet : 0 total bet : 400
-my bet : 0 my total bet : 400
-my card is D2 C4 my win rate is 0.9103 my odds is 0.0
+my card is H4 C4 my win rate is 0.5479 my odds is 0.0
+my decision is raise bet 
 turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is D6 D7 my win rate is 0.4954 my odds is 0.0
-turn num is 1 shared cards are : D2 S6 H6
-player 1 range : 1225 this turn bet : 0 total bet : 80
-my bet : 0 my total bet : 80
-my card is D6 D7 my win rate is 0.9462 my odds is 0.0
+player 1 range : 1225 this turn bet : 20 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 0 my total bet : 0
+my card is S8 DK my win rate is 0.4105 my odds is 0.4
+my decision is give up
+turn num is 0 shared cards are : 
+player 1 range : 1225 this turn bet : 20 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 0 my total bet : 0
+my card is C7 H2 my win rate is 0.2231 my odds is 0.4
+my decision is give up
 turn num is 0 shared cards are : 
 player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is DA H2 my win rate is 0.3816 my odds is 0.16666666666666666
-turn num is 1 shared cards are : H7 H5 C9
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is DA H2 my win rate is 0.2322 my odds is 0.0
-turn num is 1 shared cards are : H7 H5 C9
-player 0 range : 24 this turn bet : 240 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is DA H2 my win rate is 0.1283 my odds is 0.4
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 1 range : 1225 this turn bet : 40 total bet : 0
+player 1 range : 178 this turn bet : 80 total bet : 0
 my bet : 40 my total bet : 0
-my card is H2 SQ my win rate is 0.3262 my odds is 0.0
-turn num is 1 shared cards are : S2 HT D9
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 1 range : 551 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is H2 SQ my win rate is 0.3144 my odds is 0.0
-turn num is 2 shared cards are : S2 HT D9 CK
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 1 range : 551 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is H2 SQ my win rate is 0.1996 my odds is 0.0
-turn num is 3 shared cards are : S2 HT D9 CK SA
-player 0 range : 526 this turn bet : 0 total bet : 120
-player 1 range : 551 this turn bet : 0 total bet : 120
-my bet : 0 my total bet : 120
-my card is H2 SQ my win rate is 0.0323 my odds is 0.0
+my card is H2 S3 my win rate is 0.2011 my odds is 0.2
+my decision is callbet
 turn num is 0 shared cards are : 
+player 0 range : 178 this turn bet : 160 total bet : 0
+player 1 range : 25 this turn bet : 280 total bet : 0
+my bet : 80 my total bet : 0
+my card is H2 S3 my win rate is 0.1419 my odds is 0.2777777777777778
+my decision is callbet
+turn num is 0 shared cards are : 
+player 0 range : 27 this turn bet : 520 total bet : 0
+player 1 range : 10 this turn bet : 440 total bet : 0
+my bet : 280 my total bet : 0
+my card is H2 S3 my win rate is 0.1381 my odds is 0.16216216216216217
+my decision is callbet
+turn num is 1 shared cards are : H7 S8 C5
+player 0 range : 27 this turn bet : 0 total bet : 520
+player 1 range : 10 this turn bet : 0 total bet : 440
+my bet : 0 my total bet : 520
+my card is H2 S3 my win rate is 0.0616 my odds is 0.0
+my decision is check
+turn num is 1 shared cards are : H7 S8 C5
+player 0 range : 10 this turn bet : 480 total bet : 520
+player 1 range : 10 this turn bet : 0 total bet : 440
+my bet : 0 my total bet : 520
+my card is H2 S3 my win rate is 0.0661 my odds is 0.19672131147540983
+my decision is give up
+turn num is 0 shared cards are : 
+player 1 range : 1225 this turn bet : 20 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 0 my total bet : 0
+my card is CQ C4 my win rate is 0.3783 my odds is 0.4
+my decision is give up
+turn num is 0 shared cards are : 
+player 0 range : 98 this turn bet : 80 total bet : 0
 player 2 range : 1225 this turn bet : 40 total bet : 0
 my bet : 20 my total bet : 0
-my card is C8 D3 my win rate is 0.4244 my odds is 0.25
-turn num is 0 shared cards are : 
-player 2 range : 79 this turn bet : 160 total bet : 0
-my bet : 40 my total bet : 0
-my card is C8 D3 my win rate is 0.2246 my odds is 0.375
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is C5 ST my win rate is 0.2965 my odds is 0.16666666666666666
-turn num is 1 shared cards are : SQ D8 C6
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C5 ST my win rate is 0.1599 my odds is 0.0
-turn num is 2 shared cards are : SQ D8 C6 S4
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C5 ST my win rate is 0.1415 my odds is 0.0
-turn num is 2 shared cards are : SQ D8 C6 S4
-player 0 range : 134 this turn bet : 120 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is C5 ST my win rate is 0.1184 my odds is 0.3333333333333333
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is HJ DA my win rate is 0.4781 my odds is 0.16666666666666666
-turn num is 1 shared cards are : D4 SK S2
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is HJ DA my win rate is 0.302 my odds is 0.0
-turn num is 1 shared cards are : D4 SK S2
-player 0 range : 24 this turn bet : 240 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is HJ DA my win rate is 0.1264 my odds is 0.4
-turn num is 0 shared cards are : 
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is DQ D5 my win rate is 0.5647 my odds is 0.25
-turn num is 0 shared cards are : 
-player 2 range : 1225 this turn bet : 80 total bet : 0
-my bet : 40 my total bet : 0
-my card is DQ D5 my win rate is 0.5685 my odds is 0.25
-turn num is 1 shared cards are : S4 H6 H2
-player 2 range : 1225 this turn bet : 0 total bet : 80
-my bet : 0 my total bet : 80
-my card is DQ D5 my win rate is 0.4488 my odds is 0.0
-turn num is 1 shared cards are : S4 H6 H2
-player 2 range : 134 this turn bet : 160 total bet : 80
-my bet : 0 my total bet : 80
-my card is DQ D5 my win rate is 0.3024 my odds is 0.3333333333333333
-turn num is 2 shared cards are : S4 H6 H2 DK
-player 2 range : 134 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is DQ D5 my win rate is 0.1479 my odds is 0.0
-turn num is 3 shared cards are : S4 H6 H2 DK H5
-player 2 range : 134 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is DQ D5 my win rate is 0.2865 my odds is 0.0
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-my bet : 40 my total bet : 0
-my card is HQ DA my win rate is 0.6578 my odds is 0.0
-turn num is 1 shared cards are : CT HA S4
-player 1 range : 483 this turn bet : 0 total bet : 160
+my card is S4 S3 my win rate is 0.322 my odds is 0.3
+my decision is raise bet 
+turn num is 1 shared cards are : DJ D3 HT
+player 0 range : 45 this turn bet : 0 total bet : 160
+player 2 range : 520 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is HQ DA my win rate is 0.8743 my odds is 0.0
-turn num is 2 shared cards are : CT HA S4 S6
-player 1 range : 483 this turn bet : 0 total bet : 160
+my card is S3 S4 my win rate is 0.3476 my odds is 0.0
+my decision is check
+turn num is 2 shared cards are : DJ D3 HT C8
+player 0 range : 45 this turn bet : 0 total bet : 160
+player 2 range : 520 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is HQ DA my win rate is 0.8796 my odds is 0.0
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is D7 C9 my win rate is 0.3336 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 61 this turn bet : 240 total bet : 0
-my bet : 40 my total bet : 0
-my card is D7 C9 my win rate is 0.2012 my odds is 0.38461538461538464
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is CA HJ my win rate is 0.4634 my odds is 0.4
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 61 this turn bet : 240 total bet : 0
-my bet : 40 my total bet : 0
-my card is CA HJ my win rate is 0.3169 my odds is 0.38461538461538464
-turn num is 1 shared cards are : HA S8 C2
-player 1 range : 530 this turn bet : 0 total bet : 240
-player 2 range : 61 this turn bet : 0 total bet : 240
-my bet : 0 my total bet : 240
-my card is CA HJ my win rate is 0.6627 my odds is 0.0
-turn num is 2 shared cards are : HA S8 C2 HK
-player 1 range : 58 this turn bet : 720 total bet : 240
-my bet : 0 my total bet : 240
-my card is CA HJ my win rate is 0.6545 my odds is 0.3333333333333333
-turn num is 3 shared cards are : HA S8 C2 HK C9
-player 1 range : 10 this turn bet : 1440 total bet : 960
-my bet : 0 my total bet : 960
-my card is CA HJ my win rate is 0.4963 my odds is 0.2857142857142857
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is D6 H3 my win rate is 0.2542 my odds is 0.4
-turn num is 0 shared cards are : 
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is CK D7 my win rate is 0.6021 my odds is 0.25
-turn num is 1 shared cards are : D5 H4 S9
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is CK D7 my win rate is 0.4502 my odds is 0.0
-turn num is 0 shared cards are : 
-player 1 range : 1225 this turn bet : 20 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 0 my total bet : 0
-my card is D7 H3 my win rate is 0.2575 my odds is 0.4
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is D9 H3 my win rate is 0.2652 my odds is 0.16666666666666666
-turn num is 1 shared cards are : CJ HT S7
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is D9 H3 my win rate is 0.2418 my odds is 0.0
-turn num is 1 shared cards are : CJ HT S7
-player 0 range : 24 this turn bet : 240 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is D9 H3 my win rate is 0.1717 my odds is 0.4
-turn num is 0 shared cards are : 
-player 0 range : 1225 this turn bet : 40 total bet : 0
-player 2 range : 1225 this turn bet : 40 total bet : 0
-my bet : 20 my total bet : 0
-my card is D3 S4 my win rate is 0.2499 my odds is 0.16666666666666666
-turn num is 1 shared cards are : H3 CA C3
-player 0 range : 1225 this turn bet : 0 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is D3 S4 my win rate is 0.8815 my odds is 0.0
-turn num is 1 shared cards are : H3 CA C3
-player 0 range : 134 this turn bet : 120 total bet : 40
-player 2 range : 1225 this turn bet : 0 total bet : 40
-my bet : 0 my total bet : 40
-my card is D3 S4 my win rate is 0.8485 my odds is 0.3333333333333333
-turn num is 2 shared cards are : H3 CA C3 S9
-player 0 range : 134 this turn bet : 0 total bet : 160
+my card is S3 S4 my win rate is 0.3003 my odds is 0.0
+my decision is check
+turn num is 3 shared cards are : DJ D3 HT C8 C2
+player 0 range : 45 this turn bet : 0 total bet : 160
+player 2 range : 520 this turn bet : 0 total bet : 160
 my bet : 0 my total bet : 160
-my card is D3 S4 my win rate is 0.9371 my odds is 0.0
+my card is S3 S4 my win rate is 0.2729 my odds is 0.0
+my decision is check
+turn num is 0 shared cards are : 
+player 1 range : 134 this turn bet : 80 total bet : 0
+my bet : 40 my total bet : 0
+my card is H4 D6 my win rate is 0.293 my odds is 0.25
+my decision is callbet
+turn num is 1 shared cards are : SA S5 HJ
+player 1 range : 20 this turn bet : 80 total bet : 80
+my bet : 0 my total bet : 80
+my card is H4 D6 my win rate is 0.0561 my odds is 0.25
+my decision is give up
+turn num is 0 shared cards are : 
+player 1 range : 1225 this turn bet : 20 total bet : 0
+player 2 range : 1225 this turn bet : 40 total bet : 0
+my bet : 0 my total bet : 0
+my card is C9 H4 my win rate is 0.2726 my odds is 0.4
+my decision is give up

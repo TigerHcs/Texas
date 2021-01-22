@@ -2,7 +2,6 @@ import os
 import pickle
 import random
 
-from lib.client_lib import judge_two
 def my_hash(cards):
     ret = 0
     for card in cards:
@@ -27,6 +26,7 @@ class RangeUtil():
             self.origin_range = pickle.load(f)
             self.origin_range = self.origin_range[0]
     def update_range(self, my_hand, com, cur_range):
+        from lib.client_lib import judge_two
         my_hand = sorted(my_hand)
         com = sorted(com)
         if not com: # before flop
@@ -38,7 +38,6 @@ class RangeUtil():
             dic = {}
             for pair in cur_range:
                 now_cards = [_ for _ in range(52) if _ not in (com+my_hand+pair)]
-                print(len(now_cards))
                 cnt_win = 0
                 need_com = 5 - len(com)
                 for _ in range(total_t):

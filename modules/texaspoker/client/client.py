@@ -171,22 +171,20 @@ class Client(object):
             # if self.stoped:
             #     break
 
-            # 如果本轮游戏结束，清空player下注记录
-            if self.state.round_over() == 1:
-                self.last_raised = -1
-                for player in self.state.player:
-                    player.clear_bet_record()
-
             if res.type == MessageType_GameDecision:
                 # server asking for a decision from the client
                 self.state.currpos = res.pos
                 if res.pos == self.mypos:
                     decision = self.ai(self.mypos, self.state, self.username)
+
                     if not decision.isValid():
                         self.logger.info('$$$ This client made a invalid decision')
                         print(decision, flush=True)
                         decision.fix()
                         print(decision, flush=True)
+
+                    if decision.raisebet == 1 and decision.amount > self.state.bigBlind:
+                        self.state.last_raised_id = self.mypos
 
                     self.logger.info('$$$ This client made a decision at pos {}'.format(self.mypos))
                     self.add_request(dealer_pb2.DealerRequest(user=self.username, giveup=decision.giveup,
@@ -214,6 +212,9 @@ class Client(object):
                         self.state.last_raised = max(self.state.player[self.state.currpos].bet - self.state.minbet, self.state.last_raised)
                         self.state.minbet = self.state.player[self.state.currpos].bet
 
+                        if self.state.turnNum > 0 or self.state.minbet > self.state.bigBlind:
+                            self.state.last_raised_id = self.state.currpos
+
                     self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, mesg)
                 elif res.callbet == 1:
@@ -230,6 +231,10 @@ class Client(object):
                 elif res.raisebet == 1:
                     self.state.last_raised = max(res.amount - self.state.minbet, self.state.last_raised)
                     self.state.minbet = res.amount
+
+                    if self.state.turnNum > 0 or self.state.minbet > self.state.bigBlind:
+                        self.state.last_raised_id = self.state.currpos
+
                     delta = res.amount - self.state.player[self.state.currpos].bet
                     self.state.player[self.state.currpos].raisebet(delta)
                     self.state.moneypot += delta
@@ -338,6 +343,12 @@ class Client(object):
 
                 self.stoped = True
 
+                # 如果本轮游戏结束，清空player下注记录
+                self.state.last_raised_id = -1
+                self.state.first_round_win_rate = -1
+                for player in self.state.player:
+                    player.clear_bet_record()
+
                 # self.client_reset(self.username, self.ai, self.logger, self.mypos)
                 if ISTESTING:
                     return
@@ -402,7 +413,7 @@ if __name__ == '__main__':
     # if len(sys.argv) == 1:
         # print('Error: enter the name for the client!')
     #username = sys.argv[1]
-    username = "01Linus"
+    username = "03Linus"
     logger = simple_logger()
     f = open(username + ".txt", "w")
     f.truncate()

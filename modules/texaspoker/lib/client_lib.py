@@ -453,6 +453,7 @@ class State(object):
         self.turnNum = 0               # 0, 1, 2, 3 for pre-flop round, flop round, turn round and river round
         self.last_raised = bigBlind    # the amount of bet raise last time
         self.last_raised_id = -1
+        self.first_round_win_rate = -1
         self.player = []               # All players. You can check them to help your decision. The 'cards' field of other player is not visiable for sure.
         for i in range(totalPlayer):
             self.player.append(Player(initMoney, self))

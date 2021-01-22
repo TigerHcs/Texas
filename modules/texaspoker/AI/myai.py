@@ -21,6 +21,59 @@ def card2str(cards):
     return str(cards[0]) + "#" + str(cards[1])
 
 
+def is_same_color(card1, card2):
+    return id2color(card1) == id2color(card2)
+
+
+def turn0_range_judge(my_cards, pos):
+    my_cards.sort()
+    same_color = is_same_color(my_cards[0], my_cards[1])
+    num1 = id2num(my_cards[0])
+    num2 = id2num(my_cards[1])
+    if num2 == 12 or num1 == num2:
+        return True
+    if same_color and pos == 0:
+        if num1 > 0 and num2 == 11:
+            return True
+        elif num1 > 2 and num2 == 10:
+            return True
+        elif num1 > 3 and (num2 == 9 or num2 == 8 or num2 == 7):
+            return True
+        elif num1 > 2 and (num2 == 6 or num2 == 5):
+            return True
+        elif num1 > 1 and (num2 == 4 or num2 == 3):
+            return True
+        elif num1 == 1 and num2 == 2:
+            return True
+        else:
+            return False
+    elif same_color and pos == 1:
+        if num2 == 11:
+            return True
+        elif num1 > 1 and (num2 == 10 or num2 == 5):
+            return True
+        elif num1 > 3 and (num2 == 9 or num2 == 8):
+            return True
+        elif num1 > 2 and (num2 == 7 or num2 == 6):
+            return True
+        elif num1 > 0 and (num2 == 4 or num2 == 3 or num2 == 2):
+            return True
+        elif num1 == 0 and num2 == 1:
+            return True
+        else:
+            return False
+    elif not same_color and pos == 0:
+        if num1 > 6:
+            return True
+        else:
+            return False
+    else:
+        if num1 > 5:
+            return True
+        else:
+            return False
+
+
 # 胜率
 def get_win_rate(id, state, my_card):
     community_card = state.sharedcards
@@ -61,59 +114,24 @@ def get_odds(id, state):
     return need_bet / (need_bet + state.moneypot)
 
 
-# 前后置位判断, 针对3人桌, 0 bottom, 1 small blind, 2 big blind
-def pos_judge(id, state):
-    bottom = 0
-    small_blind = 1
-    big_blind = 2
-    if state.playernum == 2:
-        if state.turnNum == 0:
-            if id == bottom:
-                is_prepos = True
-            elif id == big_blind:
-                is_prepos = False
-            else:
-                if state.player[big_blind].active:
-                    is_prepos = True
-                else:
-                    is_prepos = False
-        else:
-            if id == small_blind:
-                is_prepos = True
-            elif id == bottom:
-                is_prepos = False
-            else:
-                if state.player[bottom].active:
-                    is_prepos = True
-                else:
-                    is_prepos = False
-
-    else:
-        if state.turnNum == 0:
-            is_prepos = True if id == 0 or id == 1 else False
-        else:
-            is_prepos = True if id == 1 or id == 2 else False
-    return is_prepos
-
+# 0 bottom, 1 small blind, 2 big blind
 
 def my_ai(id, state, username):
     small_blind = 20
     big_blind = 40
-    shot_case1 = 0.4
+    shot_case1 = 0.3
     shot_case2 = 0.75
     shot_case3 = 1.25
-    win_odd_factor = 0.1
-    check_or_raise_front = 0.2
-    check_or_raise_behind = 0.4
-    first_shot = 0.2
 
-    win_rate = get_win_rate(id, state, state.player[id].cards)
+    my_cards = state.player[id].cards
+    win_rate = get_win_rate(id, state, my_cards)
     odds = get_odds(id, state)
+
+    if state.turnNum == 0:
+        state.first_round_win_rate = win_rate
 
     decision = Decision()
     delta = state.minbet - state.player[id].bet
-
-    is_prepos = pos_judge(id, state)
 
     file = open(username + ".txt", "a")
     file.write("turn num is " + str(state.turnNum) +
@@ -127,130 +145,293 @@ def my_ai(id, state, username):
     file.write("my bet : " + str(state.player[id].bet) + " my total bet : " + str(state.player[id].totalbet) + "\n")
     file.write("my card is " + " ".join(id2str(state.player[id].cards)) + " my win rate is " + str(win_rate) + " my odds is " + str(odds) + "\n")
 
-    '''
-    # 最少加注量， state.last_raised
-    # 我方主动，最低需要check
-    if delta == 0:
-        # 后置位
-        if not is_prepos:
-            # 胜率大幅高于赔率
-            if win_rate > odds + win_odd_factor:
-                t = random.random()
-                if t <= check_or_raise_behind:
-                    decision.raisebet = 1
-                    decision.amount = 1 * state.moneypot if random.random() >= 0.5 else 2 * state.moneypot
-                else:
-                    decision.check = 1
-
-            # 胜率约等于赔率
-            elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:
-                decision.check = 1
-
-            # 胜率大幅低于赔率
-            else:
-                if delta > small_blind:
-                    decision.giveup = 1
-                else:
-                    decision.check = 1
-
-        # 前置位
-        else:
-            # 胜率大幅高于赔率
-            if win_rate > odds + win_odd_factor:
-                t = random.random()
-                if t <= check_or_raise_front:
-                    decision.raisebet = 1
-                    decision.amount = 1 * state.moneypot if random.random() >= 0.5 else 2 * state.moneypot
-                else:
-                    decision.check = 1
-
-            # 胜率约等于赔率
-            elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:
-                decision.check = 1
-
-            # 胜率大幅低于赔率
-            else:
-                if delta > small_blind:
-                    decision.giveup = 1
-                else:
-                    decision.check = 1
-
-    # 我方被动，最低需要call
-    else:
-        # 后置位，最低需要call
-        if not is_prepos:
-            # 胜率大幅高于赔率
-            if win_rate > odds + win_odd_factor:
-                t = random.random()
-                if t <= check_or_raise_behind:
-                    if delta >= state.moneypot:
-                        decision.callbet = 1
-                    else:
-                        decision.raisebet = 1
-                        decision.amount = state.moneypot
-                else:
-                    decision.callbet = 1
-
-            # 胜率约等于赔率
-            elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:
-                decision.callbet = 1
-
-            # 胜率大幅低于赔率
-            else:
-                if delta > small_blind:
-                    decision.giveup = 1
-                else:
-                    decision.callbet = 1
-
-        # 前置位，最低需要call
-        else:
-            # 胜率大幅高于赔率
-            if win_rate > odds + win_odd_factor:
-                t = random.random()
-                if t <= check_or_raise_front:
-                    if delta >= state.moneypot:
-                        decision.callbet = 1
-                    else:
-                        decision.raisebet = 1
-                        decision.amount = state.moneypot
-                else:
-                    decision.callbet = 1
-
-            # 胜率约等于赔率
-            elif odds + win_odd_factor >= win_rate >= odds - win_odd_factor:
-                decision.callbet = 1
-
-            # 胜率大幅低于赔率
-            else:
-                if delta > small_blind:
-                    decision.giveup = 1
-                else:
-                    decision.callbet = 1
-    '''
+    # flop前
     if state.turnNum == 0:
-        pass
+        # 不知道 或 防守位
+        if state.last_raised_id == -1 or state.last_raised_id != id:
+            # bottom
+            if id == 0:
+                if turn0_range_judge(my_cards, 0):
+                    p = random.random()
+                    if p <= 0.5:
+                        if delta > 0:
+                            decision.callbet = 1
+                        else:
+                            decision.check = 1
+                    else:
+                        add_bet(state, decision, shot_case1 * state.moneypot)
+                else:
+                    decision.giveup = 1
+
+            # small blind
+            elif id == 1:
+                if turn0_range_judge(my_cards, 1):
+                    p = random.random()
+                    if p <= 0.5:
+                        if delta > 0:
+                            decision.callbet = 1
+                        else:
+                            decision.check = 1
+                    else:
+                        add_bet(state, decision, shot_case1 * state.moneypot)
+                else:
+                    decision.giveup = 1
+
+            # big blind
+            else:
+                p = random.random()
+                if win_rate > 0.5:
+                    if p <= 0.5:
+                        if delta > 0:
+                            decision.callbet = 1
+                        else:
+                            decision.check = 1
+                    else:
+                        add_bet(state, decision, shot_case1 * state.moneypot)
+                else:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+        else:
+            if win_rate > odds:
+                if delta > 0:
+                    decision.callbet = 1
+                else:
+                    decision.check = 1
+
+            else:
+                decision.giveup = 1
+
+    # flop
     elif state.turnNum == 1:
-        pass
+        detla_win_rate = win_rate - state.first_round_win_rate
+        print("my win rate change is ", detla_win_rate)
+        # 防守位
+        if state.last_raised_id != -1 and state.last_raised_id != id:
+            if win_rate >= 0.7:
+                p = random.random()
+                if p <= 0.8:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+                else:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+
+            elif win_rate >= 0.5:
+                p = random.random()
+                if p <= 0.9:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+                else:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+
+            else:
+                p = random.random()
+                if win_rate > odds:
+                    if p <= 0.8:
+                        if delta > 0:
+                            decision.callbet = 1
+                        else:
+                            decision.check = 1
+                    else:
+                        decision.giveup = 1
+                else:
+                    decision.giveup = 1
+
+        # 进攻位
+        else:
+            # 胜率下降5%以上 或 胜率小于50%
+            if detla_win_rate < -0.05 or win_rate < 0.5:
+                p = random.random()
+                if p <= 0.8:
+                    decision.check = 1
+                else:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+
+            # 胜率未下降5% 且 胜率大于等于50%
+            else:
+                # 胜率上升了10%
+                if detla_win_rate >= 0.1:
+                    p = random.random()
+                    if p <= 0.7:
+                        add_bet(state, decision, shot_case1 * state.moneypot)
+                    else:
+                        add_bet(state, decision, shot_case2 * state.moneypot)
+                else:
+                    p = random.random()
+                    if p <= 0.8:
+                        add_bet(state, decision, shot_case1 * state.moneypot)
+                    else:
+                        decision.check = 1
+
+
+    # turn
     elif state.turnNum == 2:
-        pass
+        # 防守位
+        if state.last_raised_id != -1 and state.last_raised_id != id:
+            if win_rate >= 0.8:
+                p = random.random()
+                if p <= 0.8:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+                else:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+
+            elif win_rate >= 0.5:
+                p = random.random()
+                if p <= 0.9:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+                else:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+            else:
+                p = random.random()
+                if win_rate > odds:
+                    if p <= 0.8:
+                        if delta > 0:
+                            decision.callbet = 1
+                        else:
+                            decision.check = 1
+                    else:
+                        decision.giveup = 1
+                else:
+                    decision.giveup = 1
+
+        # 进攻位
+        else:
+            if win_rate >= 0.7:
+                p = random.random()
+                if p <= 0.7:
+                    add_bet(state, decision, shot_case2 * state.moneypot)
+                else:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+            elif win_rate >= 0.55:
+                p = random.random()
+                if p >= 0.8:
+                    add_bet(state, decision, shot_case2 * state.moneypot)
+                elif p >= 0.2:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+                else:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+            else:
+                p = random.random()
+                if p <= 0.9:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+                else:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+
+
+    # river
     elif state.turnNum == 3:
-        pass
+        # 防守位
+        if state.last_raised_id != -1 and state.last_raised_id != id:
+            if win_rate >= 0.85:
+                p = random.random()
+                if p <= 0.8:
+                    p = random.random()
+                    if p <= 0.5:
+                        add_bet(state, decision, shot_case2 * state.moneypot)
+                    else:
+                        add_bet(state, decision, shot_case1 * state.moneypot)
+                else:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+            elif win_rate >= 0.5:
+                p = random.random()
+                if p <= 0.9:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+                else:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+            else:
+                p = random.random()
+                if win_rate > odds:
+                    if p <= 0.8:
+                        if delta > 0:
+                            decision.callbet = 1
+                        else:
+                            decision.check = 1
+                    else:
+                        decision.giveup = 1
+                else:
+                    decision.giveup = 1
+
+        # 进攻位
+        else:
+            if win_rate >= 0.8:
+                p = random.random()
+                if p >= 0.8:
+                    add_bet(state, decision, shot_case3 * state.moneypot)
+                elif p >= 0.3:
+                    add_bet(state, decision, shot_case2 * state.moneypot)
+                else:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+            elif win_rate >= 0.6:
+                p = random.random()
+                if p >= 0.8:
+                    add_bet(state, decision, shot_case2 * state.moneypot)
+                elif p >= 0.4:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+                else:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+            else:
+                p = random.random()
+                if p <= 0.5:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+                else:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+
+
+    print_decision(file, decision)
     file.close()
     return decision
 
-def add_bet(state, total):
-    # amount: 本局需要下的总注
-    amount = total - state.player[state.currpos].totalbet
-    assert(amount > state.player[state.currpos].bet)
-    # Obey the rule of last_raised
+
+def print_decision(file, decision):
+    if decision.giveup == 1:
+        file.write("my decision is give up"+ "\n")
+    elif decision.callbet == 1:
+        file.write("my decision is callbet" + "\n")
+    elif decision.check == 1:
+        file.write("my decision is check" + "\n")
+    elif decision.allin == 1:
+        file.write("my decision is all in " + "\n")
+    elif decision.raisebet == 1:
+        file.write("my decision is raise bet " + "\n")
+
+
+def add_bet(state, decision, amount):
+    # 本轮需要加注到的amount
+    amount = amount + state.minbet
     minamount = state.last_raised + state.minbet
-    real_amount = max(amount, minamount)
-    # money_needed = real_amount - state.player[state.currpos].bet
-    decision = Decision()
+    real_amount = int(max(amount, minamount))
     decision.raisebet = 1
     decision.amount = real_amount
-    return decision
 
 
 if __name__ == '__main__':
-    player = Player(1000, 1)
+    pass
