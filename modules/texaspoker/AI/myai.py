@@ -125,6 +125,16 @@ def get_odds(id, state):
     return need_bet / (need_bet + state.moneypot)
 
 
+def get_top_ranges(ranges, n):
+    ans = ""
+    cnt = 0
+    for range in ranges:
+        ans += "(" + ' '.join(id2str(range)) + ")"
+        cnt += 1
+        if cnt >= n:
+            break
+    return ans
+
 # 0 bottom, 1 small blind, 2 big blind
 
 def my_ai(id, state, username):
@@ -151,7 +161,8 @@ def my_ai(id, state, username):
         if index != id and state.player[index].active:
             file.write("player " + str(index) + " range : " + str(len(state.player[index].range)) +
                        " this turn bet : " + str(state.player[index].bet) +
-                       " total bet : " + str(state.player[index].totalbet) + "\n")
+                       " total bet : " + str(state.player[index].totalbet) +
+                       " top 5 range: " + get_top_ranges(state.player[index].range, 20) + "\n")
 
     file.write("my bet : " + str(state.player[id].bet) + " my total bet : " + str(state.player[id].totalbet) + "\n")
     file.write("my card is " + " ".join(id2str(state.player[id].cards)) + " my win rate is " + str(win_rate) + " my odds is " + str(odds) + "\n")
@@ -211,6 +222,24 @@ def my_ai(id, state, username):
                     decision.callbet = 1
                 else:
                     decision.check = 1
+            elif win_rate >= 0.7:
+                p = random.random()
+                if p <= 0.4:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+                else:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
+            elif win_rate >= 0.5:
+                p = random.random()
+                if p <= 0.7:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+                else:
+                    add_bet(state, decision, shot_case1 * state.moneypot)
             elif win_rate > odds:
                 p = random.random()
                 if p <= 0.8:

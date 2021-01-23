@@ -199,11 +199,13 @@ class Client(object):
                 if res.giveup == 1:
                     self.state.player[self.state.currpos].active = False
                     self.state.playernum -= 1
-                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
+                    if self.state.currpos != self.mypos:
+                        self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, "give up")
                 elif res.check == 1:
-                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
-                                                                     self.state.sharedcards, self.state.turnNum, "check")
+                    if self.state.currpos != self.mypos:
+                        self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
+                                                                        self.state.sharedcards, self.state.turnNum, "check")
                 elif res.allin == 1:
                     mesg = "all in#" + str(self.state.player[self.state.currpos].money) + "#" + str(self.state.moneypot)
                     self.state.moneypot += self.state.player[self.state.currpos].money
@@ -215,7 +217,8 @@ class Client(object):
                         if self.state.turnNum > 0 or self.state.minbet > self.state.bigBlind:
                             self.state.last_raised_id = self.state.currpos
 
-                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
+                    if self.state.currpos != self.mypos:
+                        self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, mesg)
                 elif res.callbet == 1:
                     delta = self.state.minbet - self.state.player[self.state.currpos].bet
@@ -225,7 +228,8 @@ class Client(object):
                            "#" + str(self.state.moneypot - delta) + \
                            "#" + str(delta + self.state.player[self.state.currpos].money)
 
-                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
+                    if self.state.currpos != self.mypos:
+                        self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, mesg)
 
                 elif res.raisebet == 1:
@@ -242,7 +246,8 @@ class Client(object):
                            "#" + str(self.state.moneypot - delta) + \
                            "#" + str(delta + self.state.player[self.state.currpos].money)
 
-                    self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
+                    if self.state.currpos != self.mypos:
+                        self.state.player[self.state.currpos].add_action(self.range_util, self.state.player[self.mypos].cards,
                                                                      self.state.sharedcards, self.state.turnNum, mesg)  # 加注量 和 池中筹码 和 此人总筹码数
 
                 else:

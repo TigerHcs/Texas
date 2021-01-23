@@ -323,6 +323,7 @@ class Player(object):
         self.raise_upper_num = 10
         self.raise_upper_rate = 0.02
         self.call_factor = 0.5
+        self.bet_after_flop = 0
 
         ## user data
         self.username = ''
@@ -354,7 +355,10 @@ class Player(object):
             now_cards = [card for card in range(52) if card not in my_cards and card not in community_cards]
             for index1 in range(len(now_cards)):
                 for index2 in range(index1 + 1, len(now_cards)):
-                    self.range.append([index1, index2])
+                    self.range.append([now_cards[index1], now_cards[index2]])
+            self.range = range_util.update_range(my_cards, community_cards, self.range)
+
+        self.range = [range for range in self.range if range[0] not in community_cards and range[1] not in community_cards]
 
         if num_turn not in self.actions.keys():
             self.actions[num_turn] = []
@@ -362,78 +366,87 @@ class Player(object):
 
         act_list = action.split("#")
         if act_list[0] == "give up":
-            pass
+            return
         elif act_list[0] == "check":
-            pass
+            self.range = range_util.update_range(my_cards, community_cards, self.range)
 
         # 不知道具体怎么弄， 留空
         elif act_list[0] == "call bet":
-            if num_turn == 0 and int(act_list[1]) <= 40:
-                pot_rate = 0
-            elif int(act_list[2]) != 0:
-                pot_rate = int(act_list[1]) / int(act_list[2])
-            else:
-                pot_rate = 0
+            if num_turn > 0 :
+                self.bet_after_flop += int(act_list[1])
 
-            if pot_rate == 0:
-                pass
-            elif pot_rate >= 2:
-                new_upper = int(len(self.range) * 0.05) if int(len(self.range) * 0.05) >= 20 else 20
-                self.range = self.range[:new_upper]
+            if num_turn > 0:
+                new_upper = self.get_upper_bound(self.state.currpos, num_turn, self.bet_after_flop)
             else:
-                rate = self.call_factor - 0.175 * pot_rate
-                new_upper = int(len(self.range) * rate) if int(len(self.range) * rate) >= 20 else 20
-                self.range = self.range[:new_upper]
+                new_upper = self.get_upper_bound(self.state.currpos, num_turn, self.bet)
 
             self.range = range_util.update_range(my_cards, community_cards, self.range)
+
+            self.range = self.range[:new_upper]
 
         elif act_list[0] == "raise":
-            if num_turn == 0 and int(act_list[1]) <= 40:
-                pot_rate = 0
-            elif int(act_list[2]) != 0:
-                pot_rate = int(act_list[1]) / int(act_list[2])
-            else:
-                pot_rate = 0
+            if num_turn > 0:
+                self.bet_after_flop += int(act_list[1])
 
-            if pot_rate == 0:
-                pass
-            elif pot_rate >= 2:
-                new_upper = int(len(self.range) * 0.02) if int(len(self.range) * 0.02) >= self.raise_upper_num else self.raise_upper_num
-                self.range = self.range[:new_upper]
+            if num_turn > 0:
+                new_upper = self.get_upper_bound(self.state.currpos, num_turn, self.bet_after_flop)
             else:
-                rate = self.raise_factor - 0.09 * pot_rate
-                new_upper = int(len(self.range) * rate) if int(len(self.range) * rate) >= self.raise_upper_num else self.raise_upper_num
-                self.range = self.range[:new_upper]
+                if self.bet <= 40:
+                    new_upper = len(self.range)
+                else:
+                    new_upper = self.get_upper_bound(self.state.currpos, num_turn, self.bet)
 
             self.range = range_util.update_range(my_cards, community_cards, self.range)
+
+            self.range = self.range[:new_upper]
 
         elif act_list[0] == "all in":
-            if num_turn == 0 and int(act_list[1]) <= 40:
-                pot_rate = 0
-            elif int(act_list[2]) != 0:
-                pot_rate = int(act_list[1]) / int(act_list[2])
-            else:
-                pot_rate = 0
+            if num_turn > 0:
+                self.bet_after_flop += int(act_list[1])
 
-            # 暂且先按raise算
-            if pot_rate == 0:
-                pass
-            elif pot_rate >= 2:
-                new_upper = int(len(self.range) * 0.02) if int(
-                    len(self.range) * 0.02) >= self.raise_upper_num else self.raise_upper_num
-                self.range = self.range[:new_upper]
+            if num_turn > 0:
+                new_upper = self.get_upper_bound(self.state.currpos, num_turn, self.bet_after_flop)
             else:
-                rate = self.raise_factor - 0.09 * pot_rate
-                new_upper = int(len(self.range) * rate) if int(
-                    len(self.range) * rate) >= self.raise_upper_num else self.raise_upper_num
-                self.range = self.range[:new_upper]
+                new_upper = self.get_upper_bound(self.state.currpos, num_turn, self.bet)
 
             self.range = range_util.update_range(my_cards, community_cards, self.range)
+
+            self.range = self.range[:new_upper]
+
+
+    def get_upper_bound(self, pos, num_turn, totalbet):
+        big_blind = 40
+        num_bb = totalbet // big_blind
+        if num_turn == 0:
+            if pos == 0:
+                a = 64.2236330063304
+                b = 1.9423501565043
+                c = 4.0449770722618
+                d = 1.9264354902065
+            elif pos == 1:
+                a = 74.5391520904894
+                b = 2.05396800343029
+                c = 3.90923032972199
+                d = 1.94743909345997
+            else:
+                a = 64.2236330063304
+                b = 1.9423501565043
+                c = 4.0449770722618
+                d = 1.9264354902065
+            return int(12.25 * (a - d) / (1 + (num_bb/c) ** b) + d)
+        else:
+            a = 144643835240712
+            b = 1.14998599923936
+            c = 1.23710128086544e-10
+            d = 5.9914805612204
+            return int((a - d) / (1 + (num_bb/c) ** b) + d)
+
 
 
     def clear_bet_record(self):
         self.range = []
         self.actions = {}
+        self.bet_after_flop = 0
 
     def __str__(self):
         return 'player: active = %s, money = %s, bet = %s, allin = %s' % (self.active, self.money, self.bet, self.allin)
@@ -548,3 +561,10 @@ class Decision(object):
     def __str__(self):
         return 'giveup=%s, allin=%s, check=%s, callbet=%s, raisebet=%s, amount=%s' % (self.giveup,self.allin,self.check,
                                                                             self.callbet, self.raisebet, self.amount)
+
+if __name__ == '__main__':
+    a = 64.2236330063304
+    b = 1.9423501565043
+    c = 4.0449770722618
+    d = 1.9264354902065
+    print(int(12.25 * (a - d) / (1 + ((80 // 40)/c) ** b) + d))
