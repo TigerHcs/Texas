@@ -25,6 +25,17 @@ def is_same_color(card1, card2):
     return id2color(card1) == id2color(card2)
 
 
+def is_high_power(my_cards):
+    num1 = id2num(my_cards[0])
+    num2 = id2num(my_cards[1])
+    if num1 == num2 and num1 >= 9:
+        return True
+    elif num1 >= 11 and num2 >= 11:
+        return True
+    else:
+        return False
+
+
 def turn0_range_judge(my_cards, pos):
     my_cards.sort()
     same_color = is_same_color(my_cards[0], my_cards[1])
@@ -147,8 +158,8 @@ def my_ai(id, state, username):
 
     # flop前
     if state.turnNum == 0:
-        # 不知道 或 防守位
-        if state.last_raised_id == -1 or state.last_raised_id != id:
+        # 不知道 或 进攻
+        if state.last_raised_id == -1 or state.last_raised_id == id:
             # bottom
             if id == 0:
                 if turn0_range_judge(my_cards, 0):
@@ -180,8 +191,8 @@ def my_ai(id, state, username):
             # big blind
             else:
                 p = random.random()
-                if win_rate > 0.5:
-                    if p <= 0.5:
+                if win_rate >= 0.5:
+                    if p <= 0.6:
                         if delta > 0:
                             decision.callbet = 1
                         else:
@@ -193,12 +204,22 @@ def my_ai(id, state, username):
                         decision.callbet = 1
                     else:
                         decision.check = 1
+        # 防守位
         else:
-            if win_rate > odds:
+            if is_high_power(my_cards):
                 if delta > 0:
                     decision.callbet = 1
                 else:
                     decision.check = 1
+            elif win_rate > odds:
+                p = random.random()
+                if p <= 0.8:
+                    if delta > 0:
+                        decision.callbet = 1
+                    else:
+                        decision.check = 1
+                else:
+                    decision.giveup = 1
 
             else:
                 decision.giveup = 1
@@ -425,7 +446,7 @@ def print_decision(file, decision):
 
 
 def add_bet(state, decision, amount):
-    # 本轮需要加注到的amount
+    # decision.amount本轮需要加注到的amount
     amount = amount + state.minbet
     minamount = state.last_raised + state.minbet
     real_amount = int(max(amount, minamount))
@@ -434,4 +455,4 @@ def add_bet(state, decision, amount):
 
 
 if __name__ == '__main__':
-    pass
+    print(random.random())
