@@ -51,7 +51,7 @@ class RangeUtil():
         elif len(com)==3: #flop
             return sorted(cur_range, key = lambda x:-self.flop_range[my_hash(com)][my_hash(x)])
         elif len(com)==4 or len(com)==5: #turn/river
-            total_t = 20000 // len(cur_range)
+            total_t = 100000 // len(cur_range)
             dic = {}
             for pair in cur_range:
                 now_cards = [_ for _ in range(52) if _ not in (com+my_hand+pair)]

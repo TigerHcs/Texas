@@ -1,6 +1,5 @@
 # -*-coding:utf-8-*-
 import random
-from lib.client_lib import judge_two
 import time
 from lib.client_lib import id2color
 from lib.client_lib import id2num
@@ -86,12 +85,12 @@ def turn0_range_judge(my_cards, pos):
 
 
 # 胜率
-def get_win_rate(id, state, my_card):
+def get_win_rate(id, state, my_card, range_util):
     community_card = state.sharedcards
     num_need_cards = 5 - len(community_card)
     active_players = []
     win_time = 0
-    simulate_time = 10000
+    simulate_time = 50000
     for index in range(len(state.player)):
         if index != id and state.player[index].active:
             active_players.append(state.player[index])
@@ -110,7 +109,7 @@ def get_win_rate(id, state, my_card):
         now_cards = [card for card in range(52) if card not in used_card]
         c_cards += random.sample(now_cards, num_need_cards)
         for oppoent_card in opponent_cards:
-            cmp = judge_two(my_card + c_cards, oppoent_card + c_cards)
+            cmp = range_util.judge_two(my_card + c_cards, oppoent_card + c_cards)
             if cmp == 1:
                 break
         if cmp != 1:
@@ -137,7 +136,7 @@ def get_top_ranges(ranges, n):
 
 # 0 bottom, 1 small blind, 2 big blind
 
-def my_ai(id, state, username):
+def my_ai(id, state, username,range_util):
     small_blind = 20
     big_blind = 40
     shot_case1 = 0.3
@@ -145,7 +144,7 @@ def my_ai(id, state, username):
     shot_case3 = 1.25
 
     my_cards = state.player[id].cards
-    win_rate = get_win_rate(id, state, my_cards)
+    win_rate = get_win_rate(id, state, my_cards,range_til)
     odds = get_odds(id, state)
 
     if state.turnNum == 0:
@@ -261,7 +260,8 @@ def my_ai(id, state, username):
         if state.last_raised_id != -1 and state.last_raised_id != id:
             if win_rate >= 0.7:
                 p = random.random()
-                if p <= 0.8:
+                thresh = 0.8 + 0.2 * (win_rate - 0.7) / 0.3
+                if p <= thresh:
                     add_bet(state, decision, shot_case1 * state.moneypot)
                 else:
                     if delta > 0:
@@ -271,7 +271,8 @@ def my_ai(id, state, username):
 
             elif win_rate >= 0.5:
                 p = random.random()
-                if p <= 0.9:
+                thresh = 0.1 + 0.7 * (win_rate - 0.5) / 0.2
+                if p >= thresh:
                     if delta > 0:
                         decision.callbet = 1
                     else:
@@ -325,7 +326,8 @@ def my_ai(id, state, username):
         if state.last_raised_id != -1 and state.last_raised_id != id:
             if win_rate >= 0.8:
                 p = random.random()
-                if p <= 0.8:
+                thresh = 0.8 + 0.2 * (win_rate - 0.8) / 0.2
+                if p <= thresh:
                     add_bet(state, decision, shot_case1 * state.moneypot)
                 else:
                     if delta > 0:
@@ -335,7 +337,8 @@ def my_ai(id, state, username):
 
             elif win_rate >= 0.5:
                 p = random.random()
-                if p <= 0.9:
+                thresh = 0.1 + 0.7 * (win_rate - 0.5) / 0.3
+                if p >= thresh:
                     if delta > 0:
                         decision.callbet = 1
                     else:
@@ -391,7 +394,8 @@ def my_ai(id, state, username):
         if state.last_raised_id != -1 and state.last_raised_id != id:
             if win_rate >= 0.85:
                 p = random.random()
-                if p <= 0.8:
+                thresh = 0.8 + 0.2 * (win_rate - 0.85) / 0.15
+                if p <= thresh:
                     p = random.random()
                     if p <= 0.5:
                         add_bet(state, decision, shot_case2 * state.moneypot)
@@ -404,7 +408,8 @@ def my_ai(id, state, username):
                         decision.check = 1
             elif win_rate >= 0.5:
                 p = random.random()
-                if p <= 0.9:
+                thresh = 0.1 + 0.7 * (win_rate - 0.5) / 0.35
+                if p >= thresh:
                     if delta > 0:
                         decision.callbet = 1
                     else:
@@ -447,7 +452,8 @@ def my_ai(id, state, username):
                         decision.check = 1
             else:
                 p = random.random()
-                if p <= 0.5:
+                thresh = 0.6 * (win_rate - 0.2) / 0.4
+                if p > 0.2 and p <= thresh:
                     add_bet(state, decision, shot_case1 * state.moneypot)
                 else:
                     if delta > 0:
