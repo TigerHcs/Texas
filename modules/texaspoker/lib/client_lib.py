@@ -416,6 +416,7 @@ class Player(object):
 
     def get_upper_bound(self, pos, num_turn, totalbet):
         big_blind = 40
+        num_max = 10
         num_bb = totalbet // big_blind
         if num_turn == 0:
             if pos == 0:
@@ -433,13 +434,13 @@ class Player(object):
                 b = 1.9423501565043
                 c = 4.0449770722618
                 d = 1.9264354902065
-            return int(12.25 * (a - d) / (1 + (num_bb/c) ** b) + d)
+            return max(int(12.25 * (a - d) / (1 + (num_bb/c) ** b) + d), 24)
         else:
             a = 144643835240712
             b = 1.14998599923936
             c = 1.23710128086544e-10
             d = 5.9914805612204
-            return int((a - d) / (1 + (num_bb/c) ** b) + d)
+            return max(int((a - d) / (1 + (num_bb/c) ** b) + d), 10)
 
 
 

@@ -5,6 +5,7 @@ from lib.client_lib import id2color
 from lib.client_lib import id2num
 from lib.client_lib import Player
 from lib.client_lib import Decision
+from lib.client_lib import judge_two
 
 
 def id2str(cards):
@@ -90,7 +91,7 @@ def get_win_rate(id, state, my_card, range_util):
     num_need_cards = 5 - len(community_card)
     active_players = []
     win_time = 0
-    simulate_time = 50000
+    simulate_time = 10000
     for index in range(len(state.player)):
         if index != id and state.player[index].active:
             active_players.append(state.player[index])
@@ -109,7 +110,7 @@ def get_win_rate(id, state, my_card, range_util):
         now_cards = [card for card in range(52) if card not in used_card]
         c_cards += random.sample(now_cards, num_need_cards)
         for oppoent_card in opponent_cards:
-            cmp = range_util.judge_two(my_card + c_cards, oppoent_card + c_cards)
+            cmp = judge_two(my_card + c_cards, oppoent_card + c_cards)
             if cmp == 1:
                 break
         if cmp != 1:
@@ -136,7 +137,7 @@ def get_top_ranges(ranges, n):
 
 # 0 bottom, 1 small blind, 2 big blind
 
-def my_ai(id, state, username,range_util):
+def my_ai(id, state, username, range_util):
     small_blind = 20
     big_blind = 40
     shot_case1 = 0.3
@@ -144,7 +145,7 @@ def my_ai(id, state, username,range_util):
     shot_case3 = 1.25
 
     my_cards = state.player[id].cards
-    win_rate = get_win_rate(id, state, my_cards,range_til)
+    win_rate = get_win_rate(id, state, my_cards, range_util)
     odds = get_odds(id, state)
 
     if state.turnNum == 0:
@@ -182,7 +183,10 @@ def my_ai(id, state, username,range_util):
                     else:
                         add_bet(state, decision, shot_case1 * state.moneypot)
                 else:
-                    decision.giveup = 1
+                    if odds > 0:
+                        decision.giveup = 1
+                    else:
+                        decision.check = 1
 
             # small blind
             elif id == 1:
@@ -196,7 +200,10 @@ def my_ai(id, state, username,range_util):
                     else:
                         add_bet(state, decision, shot_case1 * state.moneypot)
                 else:
-                    decision.giveup = 1
+                    if odds > 0:
+                        decision.giveup = 1
+                    else:
+                        decision.check = 1
 
             # big blind
             else:
@@ -247,10 +254,16 @@ def my_ai(id, state, username,range_util):
                     else:
                         decision.check = 1
                 else:
-                    decision.giveup = 1
+                    if odds > 0:
+                        decision.giveup = 1
+                    else:
+                        decision.check = 0
 
             else:
-                decision.giveup = 1
+                if odds > 0:
+                    decision.giveup = 1
+                else:
+                    decision.check = 1
 
     # flop
     elif state.turnNum == 1:
@@ -289,9 +302,15 @@ def my_ai(id, state, username,range_util):
                         else:
                             decision.check = 1
                     else:
-                        decision.giveup = 1
+                        if odds > 0:
+                            decision.giveup = 1
+                        else:
+                            decision.check = 1
                 else:
-                    decision.giveup = 1
+                    if odds > 0:
+                        decision.giveup = 1
+                    else:
+                        decision.check = 1
 
         # 进攻位
         else:
@@ -354,9 +373,15 @@ def my_ai(id, state, username,range_util):
                         else:
                             decision.check = 1
                     else:
-                        decision.giveup = 1
+                        if odds > 0:
+                            decision.giveup = 1
+                        else:
+                            decision.check = 1
                 else:
-                    decision.giveup = 1
+                    if odds > 0:
+                        decision.giveup = 1
+                    else:
+                        decision.check = 1
 
         # 进攻位
         else:
@@ -425,9 +450,15 @@ def my_ai(id, state, username,range_util):
                         else:
                             decision.check = 1
                     else:
-                        decision.giveup = 1
+                        if odds > 0:
+                            decision.giveup = 1
+                        else:
+                            decision.check = 1
                 else:
-                    decision.giveup = 1
+                    if odds > 0:
+                        decision.giveup = 1
+                    else:
+                        decision.check = 1
 
         # 进攻位
         else:

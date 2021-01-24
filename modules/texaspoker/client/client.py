@@ -50,7 +50,7 @@ from AI.myai import my_ai
 
 # **************************************modify here to set address and port ***********************
 address = '47.103.23.116'
-port = 56710
+port = 56703
 # *************************************************************************************************
 
 
@@ -175,7 +175,7 @@ class Client(object):
                 # server asking for a decision from the client
                 self.state.currpos = res.pos
                 if res.pos == self.mypos:
-                    decision = self.ai(self.mypos, self.state, self.username)
+                    decision = self.ai(self.mypos, self.state, self.username, self.range_util)
 
                     if not decision.isValid():
                         self.logger.info('$$$ This client made a invalid decision')
@@ -418,7 +418,7 @@ if __name__ == '__main__':
     # if len(sys.argv) == 1:
         # print('Error: enter the name for the client!')
     #username = sys.argv[1]
-    username = "03Linus"
+    username = "01Linus"
     logger = simple_logger()
     f = open(username + ".txt", "w")
     f.truncate()

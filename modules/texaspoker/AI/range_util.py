@@ -22,12 +22,13 @@ class RangeUtil():
     def __init__(self, path):
         self.origin_range_filename = os.path.join(path, "data/origin_range")
         self.flop_range_filename = os.path.join(path, "data/flop_range")
-        self.dat = list(np.fromfile("data/HandRanks.dat", int))
+        # self.dat = list(np.fromfile(os.path.join(path, "data/HandRanks.dat"), int))
         with open(self.flop_range_filename, 'rb') as f:
             self.flop_range = pickle.load(f)
         with open(self.origin_range_filename, 'rb') as f:
             self.origin_range = pickle.load(f)
             self.origin_range = self.origin_range[0]
+    '''
     def find_dat(self, cards):
         ret = self.dat[53+cards[0]]
         for i in cards[1:]:
@@ -43,7 +44,9 @@ class RangeUtil():
             return 1
         else:
             return 0
+    '''
     def update_range(self, my_hand, com, cur_range):
+        from lib.client_lib import judge_two
         my_hand = sorted(my_hand)
         com = sorted(com)
         if not com: # before flop
@@ -62,7 +65,7 @@ class RangeUtil():
                     com_ = com[:]
                     if need_com == 1:
                         com_.append(cards[-1])
-                    res = self.judge_two(com_+cards[:2], com_+pair)
+                    res = judge_two(com_+cards[:2], com_+pair)
                     cnt_win += (res+1)/2.0
 
                 dic[my_hash(pair)] = cnt_win
